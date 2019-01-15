@@ -6,7 +6,8 @@ public class player : MonoBehaviour {
 
     Rigidbody2D rb2d;
     int playerMoveUnitsPerSecond;
-
+    [SerializeField]
+    GameObject prefabIronhand;
     // Use this for initialization
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
@@ -30,7 +31,20 @@ public class player : MonoBehaviour {
                 Time.deltaTime;
             rb2d.MovePosition(position);
         }
-        
+        if (Input.GetMouseButtonDown(1))
+        {
+            GameObject ironhandobject = Instantiate(prefabIronhand, transform.position, Quaternion.identity);
+            ironhand ironhandscript = ironhandobject.GetComponent<ironhand>();
+            Vector3 mouseposition = Input.mousePosition;
+            Vector3 handposition = Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 direction = mouseposition - handposition;
+            direction.z = 0f;  
+            direction = direction.normalized;
+            float pushAngle = Mathf.Atan2(direction.y,direction.x);
+            ironhandscript.pushing(pushAngle);
+
+        }
+
     }
 
 }
