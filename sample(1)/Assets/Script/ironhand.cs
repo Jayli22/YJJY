@@ -6,6 +6,7 @@ public class ironhand : MonoBehaviour {
     Rigidbody2D rb2d;
     Vector2 pushdirection;
     Timer EndTimer;
+    float pushDegree;
 	// Use this for initialization
 	void Awake () {
         rb2d = GetComponent<Rigidbody2D>();
@@ -32,9 +33,18 @@ public class ironhand : MonoBehaviour {
     public void pushing(float pushAngle)
     {
         print(pushAngle*Mathf.Rad2Deg);
+        pushDegree = pushAngle;
         pushdirection.x = Mathf.Cos(pushAngle);
         pushdirection.y = Mathf.Sin(pushAngle);
         transform.rotation = Quaternion.AngleAxis((pushAngle*Mathf.Rad2Deg)-90, Vector3.forward);
         rb2d.AddForce(50 * pushdirection, ForceMode2D.Impulse);
+    }
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if(coll.gameObject.CompareTag("stone"))
+        {
+            stone StoneScript = coll.gameObject.GetComponent<stone>();
+            StoneScript.bePushed(pushDegree);
+        }
     }
 }

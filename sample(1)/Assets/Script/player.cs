@@ -8,14 +8,23 @@ public class player : MonoBehaviour {
     int playerMoveUnitsPerSecond;
     [SerializeField]
     GameObject prefabIronhand;
+    Timer CoolDownTimer;
+    bool canPush;
     // Use this for initialization
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         playerMoveUnitsPerSecond = 20;
+        CoolDownTimer = gameObject.AddComponent<Timer>();
+        CoolDownTimer.Duration = 1;
+        canPush = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if(!canPush&&CoolDownTimer.Finished)
+        {
+            canPush = true;
+        }
 		
 	}
     private void FixedUpdate()
@@ -31,7 +40,7 @@ public class player : MonoBehaviour {
                 Time.deltaTime;
             rb2d.MovePosition(position);
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && canPush )
         {
             GameObject ironhandobject = Instantiate(prefabIronhand, transform.position, Quaternion.identity);
             ironhand ironhandscript = ironhandobject.GetComponent<ironhand>();
@@ -42,9 +51,18 @@ public class player : MonoBehaviour {
             direction = direction.normalized;
             float pushAngle = Mathf.Atan2(direction.y,direction.x);
             ironhandscript.pushing(pushAngle);
+            canPush = false;
+            CoolDownTimer.Run();
 
         }
 
+    }
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.CompareTag("stone"))
+        {
+
+        }
     }
 
 }
