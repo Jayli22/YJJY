@@ -8,6 +8,7 @@ TagManager:
   - stone
   - wall
   - player
+  - bullet
   layers:
   - Default
   - TransparentFX

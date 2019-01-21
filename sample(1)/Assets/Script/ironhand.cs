@@ -46,5 +46,10 @@ public class ironhand : MonoBehaviour {
             stone StoneScript = coll.gameObject.GetComponent<stone>();
             StoneScript.bePushed(pushDegree);
         }
+        else if (coll.gameObject.CompareTag("bullet"))
+        {
+            Bullet bulletScript = coll.gameObject.GetComponent<Bullet>();
+            bulletScript.bePushed(pushDegree);
+        }
     }
 }
