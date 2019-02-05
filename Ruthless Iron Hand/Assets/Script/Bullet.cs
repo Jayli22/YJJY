@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour {
     {
         if(coll.gameObject.CompareTag("player")&&!friendly)
         {
-            player playerScript = coll.gameObject.GetComponent<player>();
+            Player playerScript = coll.gameObject.GetComponent<Player>();
             playerScript.getHurt(damagePoint);
         }
         if(coll.gameObject.CompareTag("wall")|| coll.gameObject.CompareTag("stone"))

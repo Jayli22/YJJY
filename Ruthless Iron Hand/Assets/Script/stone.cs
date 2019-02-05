@@ -29,7 +29,7 @@ public class stone : MonoBehaviour {
     {
         if (coll.gameObject.CompareTag("player")&&moving)
         {
-            player playerScript = coll.gameObject.GetComponent<player>();
+            Player playerScript = coll.gameObject.GetComponent<Player>();
             playerScript.Freeze();
             Destroy(gameObject);
         }

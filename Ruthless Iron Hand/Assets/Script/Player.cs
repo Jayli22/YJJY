@@ -5,6 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     Rigidbody2D rb2d;
+    protected Vector2 direction;
+    private static Player instance;
+
     int playerMoveUnitsPerSecond;
     [SerializeField]
     GameObject prefabIronhand;
@@ -12,6 +15,21 @@ public class Player : MonoBehaviour {
     bool canPush;
     int healthPoint;
     Vector2 position;
+
+    public static Player MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<Player>();
+            }
+            return instance;
+        }
+    }
+
+
+
     // Use this for initialization
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
@@ -34,19 +52,12 @@ public class Player : MonoBehaviour {
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        if (horizontalInput != 0 || verticalInput != 0)
-        {
-            position = rb2d.position;
-            position.x += horizontalInput * playerMoveUnitsPerSecond *
-                Time.deltaTime;
-            position.y += verticalInput * playerMoveUnitsPerSecond *
-                Time.deltaTime;
-            rb2d.MovePosition(position);
-        }
+        GetInput();
+        Move();
         if (Input.GetMouseButtonDown(1) && canPush)
         {
             GameObject ironhandobject = Instantiate(prefabIronhand, transform.position, Quaternion.identity);
-            ironhand ironhandscript = ironhandobject.GetComponent<ironhand>();
+            Ironhand ironhandscript = ironhandobject.GetComponent<Ironhand>();
             Vector3 mouseposition = Input.mousePosition;
             Vector3 handposition = Camera.main.WorldToScreenPoint(transform.position);
             Vector3 direction = mouseposition - handposition;
@@ -72,5 +83,37 @@ public class Player : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+    }
+    private void GetInput()
+    {
+        direction = Vector2.zero;
+
+        Vector2 currentVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+        if (Input.GetKey(KeyCode.W))
+        {
+            direction += Vector2.up;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            direction += Vector2.down;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            direction += Vector2.left;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            direction += Vector2.right;
+        }
+
+
+    }
+    public void Move()
+    {
+
+        rb2d.velocity = direction * 1;
+
+
+
     }
 }
