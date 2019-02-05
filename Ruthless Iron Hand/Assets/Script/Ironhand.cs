@@ -11,7 +11,7 @@ public class Ironhand : MonoBehaviour {
 	void Awake () {
         rb2d = GetComponent<Rigidbody2D>();
         EndTimer = gameObject.AddComponent<Timer>();
-        EndTimer.Duration = 0.1f;
+        EndTimer.Duration = 1f;
         EndTimer.Run();
 	}
 	
@@ -36,8 +36,8 @@ public class Ironhand : MonoBehaviour {
         pushDegree = pushAngle;
         pushdirection.x = Mathf.Cos(pushAngle);
         pushdirection.y = Mathf.Sin(pushAngle);
-        transform.rotation = Quaternion.AngleAxis((pushAngle*Mathf.Rad2Deg)-90, Vector3.forward);
-        rb2d.AddForce(50 * pushdirection, ForceMode2D.Impulse);
+        transform.rotation = Quaternion.AngleAxis((pushAngle*Mathf.Rad2Deg) -90, Vector3.forward);
+        //rb2d.AddForce(5 * pushdirection, ForceMode2D.Impulse);
     }
     private void OnTriggerEnter2D(Collider2D coll)
     {

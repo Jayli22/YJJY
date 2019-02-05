@@ -56,14 +56,31 @@ public class Player : MonoBehaviour {
         Move();
         if (Input.GetMouseButtonDown(1) && canPush)
         {
-            GameObject ironhandobject = Instantiate(prefabIronhand, transform.position, Quaternion.identity);
-            Ironhand ironhandscript = ironhandobject.GetComponent<Ironhand>();
+            Vector2 direction_position = transform.position;
             Vector3 mouseposition = Input.mousePosition;
             Vector3 handposition = Camera.main.WorldToScreenPoint(transform.position);
             Vector3 direction = mouseposition - handposition;
-            direction.z = 0f;
+            //direction.z = 0f;
             direction = direction.normalized;
             float pushAngle = Mathf.Atan2(direction.y, direction.x);
+            if (pushAngle * Mathf.Rad2Deg >= -45 && pushAngle * Mathf.Rad2Deg <= 45)
+            {
+                direction_position.x = direction_position.x + 0.1f;
+            }
+            else if (pushAngle * Mathf.Rad2Deg >= 45 && pushAngle * Mathf.Rad2Deg <= 135)
+            {
+                direction_position.y = direction_position.y + 0.1f;
+            }
+            else if (pushAngle * Mathf.Rad2Deg <= -135  || pushAngle * Mathf.Rad2Deg >= 135)
+            {
+                direction_position.x = direction_position.x - 0.1f;
+            }
+            else if (pushAngle * Mathf.Rad2Deg <=-45 && pushAngle*Mathf.Rad2Deg>=-135)
+            {
+                direction_position.y = direction_position.y - 0.1f;
+            }
+            GameObject ironhandobject = Instantiate(prefabIronhand, direction_position, Quaternion.identity);
+            Ironhand ironhandscript = ironhandobject.GetComponent<Ironhand>();
             ironhandscript.pushing(pushAngle);
             canPush = false;
             CoolDownTimer.Run();
