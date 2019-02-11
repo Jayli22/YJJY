@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour {
 
+    public bool moveable;
     public MapPathFinding PathFinding = new MapPathFinding();
     private Vector2 targetPosition;
 
@@ -42,11 +43,17 @@ public class EnemyAI : MonoBehaviour {
             PathFinding.TilemapGroup = FindObjectOfType<TilemapGroup>();
         if (PathFinding.CellSize == default(Vector2))
             PathFinding.CellSize = PathFinding.TilemapGroup[0].CellSize;
+        timer = timerrec;
+        moveable = true;
     }
-    public float timer = 2.0f; // 定时2秒
-
+    private float timer ; // 定时2秒
+    [Range(0.1f,10)]
+    public float timerrec = 0.1f;
     void Update()
     {
+        if(moveable)
+        {
+
         timer -= Time.deltaTime;
         targetPosition = Player.MyInstance.transform.position;
         // compute path to destination
@@ -57,7 +64,7 @@ public class EnemyAI : MonoBehaviour {
         //  m_targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (timer <= 0)
         {
-            timer = 2.0f;
+            timer = timerrec;
         
         
             m_targetPosition = targetPosition;
@@ -72,7 +79,9 @@ public class EnemyAI : MonoBehaviour {
                     break;
             }
         }
-      //  }
+        }
+
+        //  }
 
         //Move to destination
         if (m_curNode != null)
@@ -146,7 +155,7 @@ public class EnemyAI : MonoBehaviour {
         {
             OnComputedPath(this);
         }
-        Debug.Log(m_pathNodes.Count);
+        //Debug.Log(m_pathNodes.Count);
 
         yield return null;
     }

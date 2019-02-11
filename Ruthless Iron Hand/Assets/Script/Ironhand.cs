@@ -6,14 +6,19 @@ public class Ironhand : MonoBehaviour {
     Rigidbody2D rb2d;
     Vector2 pushdirection;
     Timer EndTimer;
+    Timer attack_delta_time;
     float pushDegree;
 	// Use this for initialization
 	void Awake () {
         rb2d = GetComponent<Rigidbody2D>();
         EndTimer = gameObject.AddComponent<Timer>();
-        EndTimer.Duration = 1f;
+        EndTimer.Duration = 0.5f;
         EndTimer.Run();
-	}
+        attack_delta_time = gameObject.AddComponent<Timer>();
+        attack_delta_time.Duration = 0.3f;
+        attack_delta_time.Run();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,6 +34,11 @@ public class Ironhand : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+       if(attack_delta_time.Finished)
+        {
+            PolygonCollider2D polycollider =  GetComponent<PolygonCollider2D>();
+            polycollider.enabled = true;
+        }
     }
     public void pushing(float pushAngle)
     {
@@ -41,15 +51,37 @@ public class Ironhand : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.gameObject.CompareTag("stone"))
+        if(coll.gameObject.CompareTag("Barrier"))
         {
-            stone StoneScript = coll.gameObject.GetComponent<stone>();
-            StoneScript.bePushed(pushDegree);
+            Debug.Log("Barrier collider");
+            Rigidbody2D target_rb2d = coll.gameObject.GetComponent<Rigidbody2D>();
+            coll.gameObject.GetComponent<Stone>().pushed_time.Run();
+            coll.gameObject.GetComponent<Stone>().bePushed(pushDegree);
+            //PushAway(pushDegree, target_rb2d);
         }
-        else if (coll.gameObject.CompareTag("bullet"))
+        else if (coll.gameObject.CompareTag("Enemy"))
         {
-            Bullet bulletScript = coll.gameObject.GetComponent<Bullet>();
-            bulletScript.bePushed(pushDegree);
+            Debug.Log("Enemy collider");
+            Rigidbody2D target_rb2d = coll.gameObject.GetComponent<Rigidbody2D>();
+            coll.gameObject.GetComponent<Enemy>().pushed_time.Run();
+            coll.gameObject.GetComponent<Enemy>().bePushed(pushDegree);
+            coll.GetComponent<Enemy>().TakeDamage(10);
+            //PushAway(pushDegree, target_rb2d);
         }
+        //else if (coll.gameObject.CompareTag("bullet"))
+        //{
+        //    Bullet bulletScript = coll.gameObject.GetComponent<Bullet>();
+        //    bulletScript.bePushed(pushDegree);
+        //}
+    }
+
+    public void PushAway(float pushDegree, Rigidbody2D rb2d)
+    {
+        //moving = true;
+        rb2d.constraints = RigidbodyConstraints2D.None;
+        pushdirection.x = Mathf.Cos(pushDegree);
+        pushdirection.y = Mathf.Sin(pushDegree);
+        rb2d.AddForce(1 * pushdirection, ForceMode2D.Impulse);
+
     }
 }
