@@ -1,0 +1,74 @@
+fileFormatVersion: 2
+guid: 40f69d00fa1d5f04bab68bcf8b67387b
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: _MapPrfab/desert
+    100002: _MapPrfab/desert/Ground
+    400000: _MapPrfab/desert/Transform
+    400002: _MapPrfab/desert/Ground/Transform
+    11400000: _MapPrfab/desert/MonoBehaviour-SuperTiled2Unity.SuperMap
+    11400002: _MapPrfab/desert/MonoBehaviour-SuperTiled2Unity.SuperCustomProperties
+    11400004: _MapPrfab/desert/Ground/MonoBehaviour-SuperTiled2Unity.SuperTileLayer
+    11400006: _MapPrfab/desert/Ground/MonoBehaviour-SuperTiled2Unity.SuperCustomProperties
+    11400008: _superAsset
+    100100000: _MapPrfab
+    2569400265252428796: _MapPrfab/desert/Grid
+    3664157343022684176: _MapPrfab/desert/Ground/TilemapRenderer
+    8195094279510102542: _MapPrfab/desert/Ground/Tilemap
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 1fa25d03934ea624a82bf2fcee6f0873, type: 3}
+  errors:
+  - Could not find tile 30. Your imported map will have holes until this is fixed.
+  - Could not find tile 14. Your imported map will have holes until this is fixed.
+  - Could not find tile 15. Your imported map will have holes until this is fixed.
+  - Could not find tile 16. Your imported map will have holes until this is fixed.
+  - Could not find tile 46. Your imported map will have holes until this is fixed.
+  - Could not find tile 31. Your imported map will have holes until this is fixed.
+  - Could not find tile 22. Your imported map will have holes until this is fixed.
+  - Could not find tile 23. Your imported map will have holes until this is fixed.
+  - Could not find tile 24. Your imported map will have holes until this is fixed.
+  - Could not find tile 1. Your imported map will have holes until this is fixed.
+  - Could not find tile 2. Your imported map will have holes until this is fixed.
+  - Could not find tile 3. Your imported map will have holes until this is fixed.
+  - Could not find tile 25. Your imported map will have holes until this is fixed.
+  - Could not find tile 26. Your imported map will have holes until this is fixed.
+  - Could not find tile 27. Your imported map will have holes until this is fixed.
+  - Could not find tile 9. Your imported map will have holes until this is fixed.
+  - Could not find tile 10. Your imported map will have holes until this is fixed.
+  - Could not find tile 11. Your imported map will have holes until this is fixed.
+  - Could not find tile 33. Your imported map will have holes until this is fixed.
+  - Could not find tile 34. Your imported map will have holes until this is fixed.
+  - Could not find tile 35. Your imported map will have holes until this is fixed.
+  - Could not find tile 40. Your imported map will have holes until this is fixed.
+  - Could not find tile 36. Your imported map will have holes until this is fixed.
+  - Could not find tile 42. Your imported map will have holes until this is fixed.
+  - Could not find tile 37. Your imported map will have holes until this is fixed.
+  - Could not find tile 38. Your imported map will have holes until this is fixed.
+  - Could not find tile 48. Your imported map will have holes until this is fixed.
+  - Could not find tile 44. Your imported map will have holes until this is fixed.
+  - Could not find tile 45. Your imported map will have holes until this is fixed.
+  - Could not find tile 39. Your imported map will have holes until this is fixed.
+  - Could not find tile 41. Your imported map will have holes until this is fixed.
+  - Could not find tile 43. Your imported map will have holes until this is fixed.
+  - Could not find tile 7. Your imported map will have holes until this is fixed.
+  - Could not find tile 8. Your imported map will have holes until this is fixed.
+  - Could not find tile 29. Your imported map will have holes until this is fixed.
+  - Could not find tile 17. Your imported map will have holes until this is fixed.
+  - Could not find tile 18. Your imported map will have holes until this is fixed.
+  - Could not find tile 19. Your imported map will have holes until this is fixed.
+  - Could not find tile 32. Your imported map will have holes until this is fixed.
+  - Could not find tile 47. Your imported map will have holes until this is fixed.
+  warnings: []
+  missingSortingLayers: []
+  missingLayers: []
+  pixelsPerUnit: 100
+  edgesPerEllipse: 16
+  numberOfObjectsImported: 2
+  tilesAsObjects: 0
+  importSorting: 0
+  isIsometric: 0
+  customImporterClassName: 
+  internalTilesets: []
