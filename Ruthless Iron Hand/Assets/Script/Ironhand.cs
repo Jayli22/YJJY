@@ -55,8 +55,8 @@ public class Ironhand : MonoBehaviour {
         {
             Debug.Log("Barrier collider");
             Rigidbody2D target_rb2d = coll.gameObject.GetComponent<Rigidbody2D>();
-            coll.gameObject.GetComponent<Stone>().pushed_time.Run();
-            coll.gameObject.GetComponent<Stone>().bePushed(pushDegree);
+            coll.gameObject.GetComponent<DestructibleObject>().pushed_time.Run();
+            coll.gameObject.GetComponent<DestructibleObject>().bePushed(pushDegree);
             //PushAway(pushDegree, target_rb2d);
         }
         else if (coll.gameObject.CompareTag("Enemy"))

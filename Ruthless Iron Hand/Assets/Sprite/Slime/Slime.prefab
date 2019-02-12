@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_hp: 100
   current_hp: 100
-  move_speed: 1
+  move_speed: 0.5
   pushed_time: {fileID: 0}
 --- !u!114 &6545863078535975888
 MonoBehaviour:

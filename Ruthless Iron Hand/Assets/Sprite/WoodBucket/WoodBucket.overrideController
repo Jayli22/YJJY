@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WoodBucket
+  m_Controller: {fileID: 9100000, guid: 74cf193927b783f4c8eac805a97a85cb, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 451fb44c36b8f5d4faa2cfa51933eff7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5ec0f35370a00f449b20d9314ff2cb15, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1390ccebbe72f8244a9de49491506252, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 72e5a505f78ff0f4c931c338933ad993, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a2d04d04a587cb04497d05f9ddb771b2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4f662aef69ab5da4dbcc8485ebde2dc6, type: 2}
