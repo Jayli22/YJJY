@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6545863078535975893}
   - component: {fileID: 6545863078535975890}
-  - component: {fileID: 6545863078535975891}
+  - component: {fileID: 2346968153409304501}
   - component: {fileID: 6545863078535975888}
   - component: {fileID: 6545863078535975889}
   - component: {fileID: 6545863078535975902}
@@ -70,21 +70,21 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1803389743
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0f1b1b28bd078d744b08c08c5fd46b1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6545863078535975891
+--- !u!114 &2346968153409304501
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,12 +93,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6545863078535975903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 022413d0e0886574c990e9123b30b452, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d3eeb597da2e3a45b788a5653008aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_hp: 100
-  current_hp: 100
-  move_speed: 0.5
+  max_hp: 20
+  current_hp: 20
+  move_speed: 0.8
   pushed_time: {fileID: 0}
 --- !u!114 &6545863078535975888
 MonoBehaviour:
@@ -124,9 +124,10 @@ MonoBehaviour:
     AllowDiagonals: 1
     AllowBlockedDestination: 0
     m_cellSize: {x: 0, y: 0}
+  is_move: 0
   ComputeMode: 1
   AsyncCoroutineIterations: 20
-  MovingSpeed: 1
+  MovingSpeed: 0.5
   ReachNodeDistance: 0.1
   timerrec: 0.5
 --- !u!50 &6545863078535975889
@@ -168,22 +169,21 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 5.12, y: 5.12}
+    newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.049999997, y: 0.12}
-      - {x: -0.08, y: 0.11}
-      - {x: -0.14999999, y: 0.049999997}
-      - {x: -0.14999999, y: -0.06}
-      - {x: -0.13, y: -0.11}
-      - {x: 0.12, y: -0.11}
-      - {x: 0.14999999, y: -0.049999997}
-      - {x: 0.14999999, y: 0.049999997}
-      - {x: 0.07, y: 0.12}
+    - - {x: -0.011573315, y: 0.111491084}
+      - {x: -0.094890356, y: 0.07490075}
+      - {x: -0.1339767, y: 0.021101713}
+      - {x: -0.12468195, y: -0.092982054}
+      - {x: 0.115745306, y: -0.09191847}
+      - {x: 0.139364, y: -0.04893613}
+      - {x: 0.12872791, y: 0.039363623}
+      - {x: 0.074254274, y: 0.09128237}
 --- !u!95 &6545863078535975892
 Animator:
   serializedVersion: 3

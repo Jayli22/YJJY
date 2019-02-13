@@ -20,7 +20,7 @@ public class Player : Character {
     private bool is_move;
     int healthPoint;
     Vector2 position;
-    private bool hitable;
+    private bool hitable = true;
     private bool is_rush;
 
     public static Player MyInstance
@@ -191,9 +191,11 @@ public class Player : Character {
     public void Move()
     {
 
-        rb2d.velocity = direction * move_speed;
+        //rb2d.velocity = direction * move_speed;
         //Debug.Log(rb2d.velocity);
         //Debug.Log(rb2d.velocity.x +","+ rb2d.velocity.y);
+        Vector3 dir = new Vector3(direction.x, direction.y, 0);
+        transform.position += dir.normalized * move_speed * Time.deltaTime;
 
         if (rb2d.velocity.x == 0 && rb2d.velocity.y == 0 )
         {
@@ -251,38 +253,54 @@ public class Player : Character {
 
         //Debug.Log("Rush");
         if (//rb2d.velocity.x == 0 && rb2d.velocity.y == 0
-            direction.x == 0 && direction.y ==0)
+            direction.x == 0 && direction.y == 0)
         {
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerIdleUp") || animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttackUp"))
             {
-                direction +=  Vector2.up;
+                direction += Vector2.up;
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerIdleDown") || animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttackDown"))
             {
-                direction +=   Vector2.down;
+                direction += Vector2.down;
 
             }
-            else if (animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerIdleLeft")|| animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttackLeft"))
+            else if (animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerIdleLeft") || animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttackLeft"))
             {
-                direction +=  Vector2.left;
+                direction += Vector2.left;
 
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerIdleRight") || animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttackRight"))
             {
-                direction +=  Vector2.right;
+                direction += Vector2.right;
 
             }
             Debug.Log(direction);
         }
         animator.SetTrigger("Rush");
-        rb2d.velocity = direction * move_speed * 50;
+        rb2d.velocity = direction * move_speed * 5;
 
         yield return new WaitForSeconds(0.2f);
         Hitable = true;
+        rb2d.velocity = direction * move_speed * 5;
 
         yield return new WaitForSeconds(0.1f);
 
         Destroy(rush_effectobj);
+
+    }
+
+    public void bePushed(float pushDegree)
+    {
+        //is_move = true;
+        //AI.moveable = false;
+        //animator.SetBool("move", false);
+        //rb2d.constraints = RigidbodyConstraints2D.None;
+        Vector2 pushdirection;
+        pushdirection.x = Mathf.Cos(pushDegree);
+        pushdirection.y = Mathf.Sin(pushDegree);
+        //animator.SetTrigger("hit");
+
+        rb2d.AddForce(3 * pushdirection, ForceMode2D.Impulse);
 
     }
 }

@@ -40,8 +40,10 @@ public class DestructibleObject : MonoBehaviour {
         floating = true;
         animator.SetBool("Float", true);
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-        pushdirection.x = Mathf.Cos(pushDegree);
-        pushdirection.y = Mathf.Sin(pushDegree);
+        pushdirection = transform.position - Player.MyInstance.transform.position;
+        pushdirection = pushdirection.normalized;
+        //pushdirection.x = Mathf.Cos(pushDegree);
+        //pushdirection.y = Mathf.Sin(pushDegree);
         rb2d.AddForce(500 * pushdirection, ForceMode2D.Impulse);
 
     }

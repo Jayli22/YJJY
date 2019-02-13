@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour {
     public bool moveable;
     public MapPathFinding PathFinding = new MapPathFinding();
     private Vector2 targetPosition;
+    public bool is_move;
 
     public enum eComputeMode
     {
@@ -79,7 +80,7 @@ public class EnemyAI : MonoBehaviour {
                     break;
             }
         }
-        }
+       
 
         //  }
 
@@ -92,7 +93,10 @@ public class EnemyAI : MonoBehaviour {
             Vector3 dir = dest - position;
             if (dir.magnitude <= ReachNodeDistance)
                 m_curNode = m_curNode.Next;
+            // move here
             transform.position += dir.normalized * MovingSpeed * Time.deltaTime;
+            //is_move = true;
+        }
         }
 
 #if UNITY_EDITOR

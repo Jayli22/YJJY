@@ -10,6 +10,7 @@ public class Character : MonoBehaviour
     //private int current_mp;
     public float move_speed;
     protected bool is_alive;
+    protected bool is_dizzy;
     protected Animator animator;
 
 
@@ -44,6 +45,7 @@ public class Character : MonoBehaviour
         if (current_hp <= 0)
         {
             is_alive = false;
+            animator.SetBool("is_alive", false);
 
         }
     }

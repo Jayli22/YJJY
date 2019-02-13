@@ -1,5 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &364861514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 364861515}
+  - component: {fileID: 364861516}
+  m_Layer: 14
+  m_Name: HeadCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &364861515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364861514}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3227305708241944363}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &364861516
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364861514}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.031086445, y: 0.2708826}
+      - {x: -0.069333315, y: 0.22423588}
+      - {x: -0.17743388, y: 0.08762189}
+      - {x: -0.1230123, y: 0.029788438}
+      - {x: 0.03364809, y: 0.035479568}
+      - {x: 0.15733261, y: 0.035510216}
+      - {x: 0.14064282, y: 0.21393006}
 --- !u!1 &3227305708241944364
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,7 +94,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 364861515}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -167,14 +231,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.1911927, y: -0.25799385}
-      - {x: 0.18289657, y: -0.046793036}
-      - {x: 0.15366888, y: 0.15542193}
-      - {x: 0.09247391, y: 0.2662864}
-      - {x: -0.01999454, y: 0.26749313}
-      - {x: -0.06, y: 0.23498078}
-      - {x: -0.12876031, y: 0.17621493}
-      - {x: -0.18747668, y: 0.09499174}
+    - - {x: 0.15919413, y: -0.22845669}
+      - {x: 0.16408888, y: 0.028948255}
+      - {x: 0.03586103, y: 0.039834633}
+      - {x: -0.12139571, y: 0.027518734}
+      - {x: -0.13310899, y: 0.025426239}
       - {x: -0.19873282, y: -0.11375206}
-      - {x: -0.14, y: -0.29}
-      - {x: 0.15752065, y: -0.28249586}
+      - {x: -0.12769276, y: -0.2752314}
+      - {x: 0.123060614, y: -0.28249586}

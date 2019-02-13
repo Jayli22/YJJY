@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    Rigidbody2D rb2d;
-    Vector2 pushdirection;
+    protected Rigidbody2D rb2d;
+    protected Vector2 pushdirection;
     public Timer pushed_time;
-    private EnemyAI AI;
-    bool moving;
+    public Timer dizzy_time;
+    protected EnemyAI AI;
+    //protected bool is_move;
     // Start is called before the first frame update
     protected override void Start()
     {
         pushed_time = gameObject.AddComponent<Timer>();
-        pushed_time.Duration = 1f;
+        dizzy_time = gameObject.AddComponent<Timer>();
 
+        pushed_time.Duration = 1f;
+        dizzy_time.Duration = 1.5f;
         rb2d = GetComponent<Rigidbody2D>();
-        moving = false;
+       // is_move = false;
 
         AI = GetComponent<EnemyAI>();
     }
@@ -24,17 +27,36 @@ public class Enemy : Character
     // Update is called once per frame
     protected override void Update()
     {
-        if (pushed_time.Finished)
+        if (pushed_time.Finished && !is_dizzy)
         {
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
             AI.moveable = true;
-            Debug.Log("Freeze");
-        }
+            animator.SetBool("move", true);
+            animator.SetBool("hit", false);
 
-        if(!is_alive)
+        }
+        if(dizzy_time.Finished)
         {
-            Destroy(gameObject);
+            AI.moveable = true;
+            animator.SetBool("dizzy", false);
+            rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+            is_dizzy = false;
+        }
+        if (!is_alive)
+        {
+            GetComponent<Collider2D>().enabled = false;
+            AI.moveable = false;
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath"))
+            {
+                animator.SetTrigger("death");
+                rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+
+            }
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -42,31 +64,59 @@ public class Enemy : Character
 
     public void bePushed(float pushDegree)
     {
-        moving = true;
+        //is_move = true;
         AI.moveable = false;
+        animator.SetBool("move", false);
+        pushdirection =  transform.position - Player.MyInstance.transform.position;
+        pushdirection = pushdirection.normalized;
 
-        //rb2d.constraints = RigidbodyConstraints2D.None;
-        pushdirection.x = Mathf.Cos(pushDegree);
-        pushdirection.y = Mathf.Sin(pushDegree);
-        rb2d.AddForce(5 * pushdirection, ForceMode2D.Impulse);
+        //float pushAngle = Mathf.Atan2(pushdirection.y, pushdirection.x);
+        ////rb2d.constraints = RigidbodyConstraints2D.None;
+        //pushdirection.x = Mathf.Cos(pushDegree);
+        //pushdirection.y = Mathf.Sin(pushDegree);
+        animator.SetBool("hit",true);
+
+        rb2d.AddForce(3 * pushdirection, ForceMode2D.Impulse);
 
     }
 
     
-    protected  void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Player" && Player.MyInstance.Hitable)
+        if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && is_alive)
         {
             Player.MyInstance.TakeDamage(1);
 
         }
-        else
+        else if (collision.transform.tag == "Map")
         {
-            TakeDamage(10);
+            AI.moveable = false;
+            animator.SetBool("dizzy", true);
+            is_dizzy = true;
+            //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+            //AI.move
+            dizzy_time.Run();
+            Debug.Log("Wall");
+            // TakeDamage(10);
         }
     }
 
+    //protected virtual void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.transform.tag == "Player" && Player.MyInstance.Hitable)
+    //    {
+    //        Player.MyInstance.TakeDamage(1);
 
-       
+    //    }
+    //    else if(collision.transform.tag == "Map")
+    //    {
+    //        rb2d.velocity = Vector2.zero;
+    //        Debug.Log("Wall");
+    //       // TakeDamage(10);
+    //    }
+    //}
+
+
+
 
 }

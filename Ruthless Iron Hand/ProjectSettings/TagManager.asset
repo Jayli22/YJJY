@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Barrier
+  - PlayerAttack
+  - Map
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - Character
   - Map
   - Enemy
-  - 
-  - 
+  - CharacterUpLayer
+  - BarriedObject
   - 
   - 
   - 
@@ -57,4 +59,10 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 4070891793
+    locked: 0
+  - name: EffectBottom
+    uniqueID: 2910624397
+    locked: 0
+  - name: Effect
+    uniqueID: 2080371663
     locked: 0

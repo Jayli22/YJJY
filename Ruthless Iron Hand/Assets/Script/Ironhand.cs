@@ -15,7 +15,7 @@ public class Ironhand : MonoBehaviour {
         EndTimer.Duration = 0.5f;
         EndTimer.Run();
         attack_delta_time = gameObject.AddComponent<Timer>();
-        attack_delta_time.Duration = 0.3f;
+        attack_delta_time.Duration = 0.4f;
         attack_delta_time.Run();
 
     }
@@ -66,6 +66,7 @@ public class Ironhand : MonoBehaviour {
             coll.gameObject.GetComponent<Enemy>().pushed_time.Run();
             coll.gameObject.GetComponent<Enemy>().bePushed(pushDegree);
             coll.GetComponent<Enemy>().TakeDamage(10);
+            
             //PushAway(pushDegree, target_rb2d);
         }
         //else if (coll.gameObject.CompareTag("bullet"))
@@ -75,13 +76,13 @@ public class Ironhand : MonoBehaviour {
         //}
     }
 
-    public void PushAway(float pushDegree, Rigidbody2D rb2d)
-    {
-        //moving = true;
-        rb2d.constraints = RigidbodyConstraints2D.None;
-        pushdirection.x = Mathf.Cos(pushDegree);
-        pushdirection.y = Mathf.Sin(pushDegree);
-        rb2d.AddForce(1 * pushdirection, ForceMode2D.Impulse);
+    //public void PushAway(float pushDegree, Rigidbody2D rb2d)
+    //{
+    //    //moving = true;
+    //    rb2d.constraints = RigidbodyConstraints2D.None;
+    //    pushdirection.x = Mathf.Cos(pushDegree);
+    //    pushdirection.y = Mathf.Sin(pushDegree);
+    //    rb2d.AddForce(1 * pushdirection, ForceMode2D.Impulse);
 
-    }
+    //}
 }
