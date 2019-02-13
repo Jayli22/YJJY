@@ -291,7 +291,8 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
-    m_ClassNames: []
+    m_ClassNames:
+    - Prefab
     m_AssetLabels: []
     m_AssetBundleNames: []
     m_VersionControlStates: []
@@ -303,7 +304,7 @@ MonoBehaviour:
     m_Folders:
     - Assets/Sprite/Slime
   m_ViewMode: 1
-  m_StartGridSize: 41
+  m_StartGridSize: 64
   m_LastFolders:
   - Assets/Sprite/Slime
   m_LastFoldersGridSize: 41
