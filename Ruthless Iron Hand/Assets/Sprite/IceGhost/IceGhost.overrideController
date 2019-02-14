@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: IceGhost
+  m_Controller: {fileID: 9100000, guid: f00131892795904479001ad7cf04d178, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 516223fc2aec52f4e906b00c81521b81, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 068ecb1ad51108f4fadc00133f19b94a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: df0825b910110fa40a18710e16003b30, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b3d1553dee224e441b205b044a744d3e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3e28a4c130cbb574c8643aca2601da7c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ab7eac24e1cdaf142aba67852672270d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ebf887f0b0fd7984d8e0811df170ca26, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a6a7f062f94ff8445a10cf7285767631, type: 2}

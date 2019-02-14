@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public int max_hp;
-    public int current_hp;
+    public int m_maxhp;
+    public int m_currenthp;
     //private int max_mp;
     //private int current_mp;
-    public float move_speed;
-    protected bool is_alive;
-    protected bool is_dizzy;
-    protected Animator animator;
+    public float m_movespeed;
+    protected bool m_is_alive;
+    protected bool m_is_dizzy;
+    protected Animator m_animator;
 
 
     // Start is called before the first frame update
@@ -21,8 +21,8 @@ public class Character : MonoBehaviour
 
     protected virtual void Awake()
     {
-        is_alive = true;
-        animator = GetComponent<Animator>();
+        m_is_alive = true;
+        m_animator = GetComponent<Animator>();
     
     }
 
@@ -41,11 +41,11 @@ public class Character : MonoBehaviour
     public virtual void TakeDamage(int damage)
     {
         //health reduce 
-        current_hp -= damage;
-        if (current_hp <= 0)
+        m_currenthp -= damage;
+        if (m_currenthp <= 0)
         {
-            is_alive = false;
-            animator.SetBool("is_alive", false);
+            m_is_alive = false;
+            //m_animator.SetBool("death", false);
 
         }
     }

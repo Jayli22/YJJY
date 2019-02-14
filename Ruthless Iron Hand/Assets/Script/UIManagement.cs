@@ -14,8 +14,8 @@ public class UIManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxhp_number = Player.MyInstance.max_hp;
-        curhp_number = Player.MyInstance.current_hp;
+        maxhp_number = Player.MyInstance.m_maxhp;
+        curhp_number = Player.MyInstance.m_currenthp;
         GameObject hpbar = GameObject.Find("HPbar");
         maxhp_array = new Image[maxhp_number];
         for (int i = 0; i < curhp_number; i++)
@@ -32,7 +32,7 @@ public class UIManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        curhp_number = Player.MyInstance.current_hp;
+        curhp_number = Player.MyInstance.m_currenthp;
 
         for (int j = curhp_number; j < maxhp_number; j++)
         {

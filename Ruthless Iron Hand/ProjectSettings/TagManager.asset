@@ -48,6 +48,9 @@ TagManager:
   - name: Ground
     uniqueID: 308297361
     locked: 0
+  - name: EffectBottom
+    uniqueID: 2910624397
+    locked: 0
   - name: Wall
     uniqueID: 285782331
     locked: 0
@@ -59,9 +62,6 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 4070891793
-    locked: 0
-  - name: EffectBottom
-    uniqueID: 2910624397
     locked: 0
   - name: Effect
     uniqueID: 2080371663
