@@ -9,12 +9,16 @@ public class Enemy : Character
     public Timer m_pushed_time;
     public Timer m_dizzy_time;
     protected EnemyAI m_AI;
+    protected AudioSource audioSource;
+
+
     //protected bool is_move;
     // Start is called before the first frame update
     protected override void Start()
     {
         m_pushed_time = gameObject.AddComponent<Timer>();
         m_dizzy_time = gameObject.AddComponent<Timer>();
+        audioSource = gameObject.GetComponent<AudioSource>();
 
         m_pushed_time.Duration = 1f;
         m_dizzy_time.Duration = 1.5f;
@@ -87,6 +91,7 @@ public class Enemy : Character
         if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && m_is_alive)
         {
             Player.MyInstance.TakeDamage(1);
+            
 
         }
         else if (collision.transform.tag == "Map")

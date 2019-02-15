@@ -47,7 +47,7 @@ public class EnemyAI : MonoBehaviour {
         timer = timerrec;
         m_moveable = true;
     }
-    private float timer ; // 定时2秒
+    private float timer ; // 定时寻路间隔时间
     [Range(0.1f,10)]
     public float timerrec = 0.1f;
     void Update()

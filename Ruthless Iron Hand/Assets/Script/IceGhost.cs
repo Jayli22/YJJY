@@ -9,9 +9,27 @@ public class IceGhost : Enemy
 
     private GameObject freeze_effect;
 
+    public AudioClip explosion_1;
+    public AudioClip explosion_2;
+    public AudioClip explosion_3;
+    public AudioClip explosion_4;
 
     protected override void Update()
     {
+
+
+        if (Utils.GetBool("ice_explosion"))
+        {
+
+
+            audioSource.clip = explosion_4;
+            audioSource.Play();
+
+
+            Utils.SetBool("ice_explosion", false);
+        }
+
+
         if (m_pushed_time.Finished && !m_is_dizzy)
         {
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
@@ -55,6 +73,8 @@ public class IceGhost : Enemy
 
     protected void DeathExplosion()
     {
+        Utils.SetBool("ice_explosion", true);
+
         Vector2 p;
         p.x = transform.position.x;
         p.y = transform.position.y + 1;

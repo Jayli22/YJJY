@@ -10,9 +10,23 @@ public class FireGhost : Enemy
 
     private GameObject explosion_effect;
 
+    public AudioClip explosion_1;
+    public AudioClip explosion_2;
+    public AudioClip explosion_3;
 
     protected override void Update()
     {
+        if (Utils.GetBool("freeze_explosion"))
+        {
+
+
+                    audioSource.clip = explosion_1;
+                    audioSource.Play();
+
+
+            Utils.SetBool("freeze_explosion", false);
+        }
+
         if (m_pushed_time.Finished && !m_is_dizzy)
         {
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
@@ -56,6 +70,7 @@ public class FireGhost : Enemy
 
     protected void DeathExplosion()
     {
+        Utils.SetBool("freeze_explosion", true);
         explosion_effect = Instantiate(m_explosion_effect, transform.position,transform.rotation);
     }
     public override void TakeDamage(int damage)

@@ -97,10 +97,12 @@
     <Compile Include="Assets\CreativeSpore\SuperTilemapEditor\Scripts\Utils\TilemapDrawingUtils.cs" />
     <Compile Include="Assets\CreativeSpore\SuperTilemapEditor\Scripts\Utils\TilemapUtils.cs" />
     <Compile Include="Assets\CreativeSpore\SuperTilemapEditor\Scripts\Utils\TilemapVertexPaintUtils.cs" />
+    <Compile Include="Assets\Script\AudioManagement.cs" />
     <Compile Include="Assets\Script\Bullet.cs" />
     <Compile Include="Assets\Script\CameraControl.cs" />
     <Compile Include="Assets\Script\ChangeScene.cs" />
     <Compile Include="Assets\Script\Character.cs" />
+    <Compile Include="Assets\Script\Constants.cs" />
     <Compile Include="Assets\Script\DestructibleObject.cs" />
     <Compile Include="Assets\Script\EffectScript.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
@@ -113,6 +115,7 @@
     <Compile Include="Assets\Script\Slime.cs" />
     <Compile Include="Assets\Script\Timer.cs" />
     <Compile Include="Assets\Script\UIManagement.cs" />
+    <Compile Include="Assets\Script\Utils.cs" />
     <None Include="Assets\CreativeSpore\SuperTilemapEditor\Extra\Tileset - Samples\Tiled - Tmx Import\license.txt" />
     <None Include="Assets\CreativeSpore\SuperTilemapEditor\changelog.txt" />
     <None Include="Assets\CreativeSpore\SuperTilemapEditor\Extra\Importers\Pyxel Edit\Documentation\PyxelEditManual.txt" />

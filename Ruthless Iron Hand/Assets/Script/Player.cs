@@ -142,7 +142,8 @@ public class Player : Character {
 		{
 			m_animator.SetTrigger("Attack");
 			m_CancelTimer.Run();
-			Vector2 direction_position = transform.position;
+            Utils.SetBool("ironhand_attack", true);
+            Vector2 direction_position = transform.position;
 			Vector3 mouseposition = Input.mousePosition;
 			Vector3 handposition = Camera.main.WorldToScreenPoint(transform.position);
 			Vector3 m_direction = mouseposition - handposition;
@@ -255,12 +256,18 @@ public class Player : Character {
 	{
 		if (is_rush)
 			is_rush = false;
-		m_RushCoolDownTimer.Run();
-		Hitable = false;
+        Utils.SetBool("player_rush", true);
+
+        m_RushCoolDownTimer.Run();
+        gameObject.layer = 10;
+        Transform child = transform.GetChild(0);
+        child.gameObject.layer = 10;
+        Hitable = false;
+
 		GameObject rush_effectobj = Instantiate(m_rush_effect, transform.position, Quaternion.identity);
 
-		//Debug.Log("Rush");
-		if (//rb2d.velocity.x == 0 && rb2d.velocity.y == 0
+        //Debug.Log("Rush");
+        if (//rb2d.velocity.x == 0 && rb2d.velocity.y == 0
 			m_movedirection.x == 0 && m_movedirection.y == 0)
 		{
 			if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerIdleUp") || m_animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerAttackUp"))
@@ -285,13 +292,16 @@ public class Player : Character {
 			Debug.Log(m_movedirection);
 		}
 		m_animator.SetTrigger("Rush");
-		m_rb2d.velocity = m_movedirection * m_movespeed * 5;
-
-		yield return new WaitForSeconds(0.2f);
+        m_rb2d.velocity = m_movedirection * m_movespeed * 5;
+        Vector3 dir = new Vector3(m_movedirection.x, m_movedirection.y, 0);
+       // transform.position += dir.normalized * m_movespeed * 60 * Time.deltaTime;
+        yield return new WaitForSeconds(0.2f);
 		Hitable = true;
 		m_rb2d.velocity = Vector2.zero;
+        gameObject.layer = 11;
+       child.gameObject.layer = 12;
 
-		yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.1f);
 
 		Destroy(rush_effectobj);
 

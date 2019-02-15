@@ -3195,11 +3195,11 @@ MonoBehaviour:
       height: 0.0625
     collData:
       vertices:
-      - {x: 0.75, y: 0}
-      - {x: 0.75, y: 1}
+      - {x: 0, y: 0}
+      - {x: 0, y: 1}
       - {x: 1, y: 1}
       - {x: 1, y: 0}
-      type: 2
+      type: 1
     paramContainer:
       m_paramList: []
     prefabData:
@@ -3334,9 +3334,9 @@ MonoBehaviour:
       vertices:
       - {x: 0, y: 0}
       - {x: 0, y: 1}
-      - {x: 0.25, y: 1}
-      - {x: 0.25, y: 0}
-      type: 2
+      - {x: 1, y: 1}
+      - {x: 1, y: 0}
+      type: 1
     paramContainer:
       m_paramList: []
     prefabData:
@@ -3899,10 +3899,10 @@ MonoBehaviour:
       height: 0.0625
     collData:
       vertices:
-      - {x: 0, y: 0.46875}
+      - {x: 0, y: 0}
       - {x: 0, y: 1}
       - {x: 1, y: 1}
-      - {x: 1, y: 0.46875}
+      - {x: 1, y: 0}
       type: 1
     paramContainer:
       m_paramList: []
@@ -3922,10 +3922,10 @@ MonoBehaviour:
       height: 0.0625
     collData:
       vertices:
-      - {x: 0, y: 0.46875}
+      - {x: 0, y: 0}
       - {x: 0, y: 1}
       - {x: 1, y: 1}
-      - {x: 1, y: 0.46875}
+      - {x: 1, y: 0}
       type: 1
     paramContainer:
       m_paramList: []
@@ -4139,11 +4139,11 @@ MonoBehaviour:
       height: 0.0625
     collData:
       vertices:
-      - {x: 0.71875, y: 0.75}
-      - {x: 0.71875, y: 1}
+      - {x: 0, y: 0}
+      - {x: 0, y: 1}
       - {x: 1, y: 1}
-      - {x: 1, y: 0.75}
-      type: 2
+      - {x: 1, y: 0}
+      type: 1
     paramContainer:
       m_paramList: []
     prefabData:
@@ -4162,10 +4162,10 @@ MonoBehaviour:
       height: 0.0625
     collData:
       vertices:
-      - {x: 0, y: 0.75}
+      - {x: 0, y: 0.03125}
       - {x: 0, y: 1}
       - {x: 1, y: 1}
-      - {x: 1, y: 0.75}
+      - {x: 1, y: 0.03125}
       type: 2
     paramContainer:
       m_paramList: []
@@ -4300,10 +4300,10 @@ MonoBehaviour:
       height: 0.0625
     collData:
       vertices:
-      - {x: 0, y: 0.75}
+      - {x: 0, y: 0}
       - {x: 0, y: 1}
-      - {x: 0.25, y: 1}
-      - {x: 0.25, y: 0.75}
+      - {x: 1, y: 1}
+      - {x: 0.96875, y: 0}
       type: 2
     paramContainer:
       m_paramList: []

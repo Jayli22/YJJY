@@ -9,8 +9,14 @@ public class DestructibleObject : MonoBehaviour {
     public int Damage;
     private bool floating;
     private Animator animator;
+    protected AudioSource m_audioSource;
+
+    public AudioClip[] crush;
+ 
+
     // Use this for initialization
     void Start () {
+        m_audioSource = gameObject.AddComponent<AudioSource>();
         pushed_time = gameObject.AddComponent<Timer>();
         pushed_time.Duration = 1f;
         animator = GetComponent<Animator>();
@@ -44,7 +50,8 @@ public class DestructibleObject : MonoBehaviour {
         pushdirection = pushdirection.normalized;
         //pushdirection.x = Mathf.Cos(pushDegree);
         //pushdirection.y = Mathf.Sin(pushDegree);
-        rb2d.AddForce(500 * pushdirection, ForceMode2D.Impulse);
+        //rb2d.AddForce(500 * pushdirection, ForceMode2D.Impulse);
+        rb2d.velocity = pushdirection * 5f;
 
     }
     private void OnCollisionEnter2D(Collision2D coll)
@@ -53,8 +60,11 @@ public class DestructibleObject : MonoBehaviour {
         {
             animator.SetBool("Destroyed",true);
             rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+            rb2d.velocity = Vector2.zero;
 
 
+            m_audioSource.clip = crush[Random.Range(0, crush.Length)];
+            m_audioSource.Play();
         }
     }
 }
