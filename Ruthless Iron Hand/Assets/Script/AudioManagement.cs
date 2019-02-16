@@ -5,10 +5,9 @@ using UnityEngine;
 public class AudioManagement : MonoBehaviour
 {
     private AudioSource audioSource;
-    public AudioClip ironhand_1;
-    public AudioClip rush_1;
-    public AudioClip rush_2;
-
+    public AudioClip[] ironhand;
+    public AudioClip[] rush;
+    public AudioClip[] bgm;
 
 
     // Start is called before the first frame update
@@ -16,15 +15,25 @@ public class AudioManagement : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         audioSource = GetComponent<AudioSource>();
+        int ri = Random.Range(0, bgm.Length);
+        audioSource.clip = bgm[ri];
+        audioSource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!audioSource.isPlaying)
+        {
+            int ri = Random.Range(0, bgm.Length);
+            audioSource.clip = bgm[ri];
+            audioSource.Play();
+        }
         if(Utils.GetBool("ironhand_attack"))
         {
             AudioSource t = gameObject.AddComponent<AudioSource>();
-            t.clip = ironhand_1;
+            int i = Random.Range(0, ironhand.Length);
+            t.clip = ironhand[i];
             t.Play();
             StartCoroutine(TimetoDestory(t));
 
@@ -33,19 +42,14 @@ public class AudioManagement : MonoBehaviour
         }
         if (Utils.GetBool("player_rush"))
         {
-            int i = Random.Range(1,3);
-            switch (i)
-            {
-                case 1:
-                    audioSource.clip = rush_1;
-                    audioSource.Play();
-                    break;
-                case 2:
-                    audioSource.clip = rush_2;
-                    audioSource.Play();
-                    break;
-            }
-            
+            AudioSource t = gameObject.AddComponent<AudioSource>();
+
+            int i = Random.Range(1,rush.Length);
+            t.clip = rush[i];
+            t.Play();
+            StartCoroutine(TimetoDestory(t));
+
+
             Utils.SetBool("player_rush", false);
         }
        
@@ -56,6 +60,5 @@ public class AudioManagement : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         Destroy(t);
-        Debug.Log("111");
     }
 }

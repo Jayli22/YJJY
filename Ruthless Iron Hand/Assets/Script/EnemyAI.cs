@@ -79,6 +79,7 @@ public class EnemyAI : MonoBehaviour {
                     UpdatePathSync(transform.position, m_targetPosition);
                     break;
             }
+              //  gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
        
 

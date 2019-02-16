@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : Character {
 
-	private Rigidbody2D m_rb2d;
 	protected Vector2 m_movedirection;
 	private static Player m_instance;
 
@@ -60,35 +59,46 @@ public class Player : Character {
 		{
 			m_canPush = true;
 		}
-		
-	}
+        if (bepushed_time.Finished)
+        {
+            m_rb2d.velocity = Vector2.zero;
+            m_bepushed = false;
+        }
+    }
 	protected override void FixedUpdate()
 	{
 		float horizontalInput = Input.GetAxis("Horizontal");
 		float verticalInput = Input.GetAxis("Vertical");
 
-		
-			GetInput();
-	   
-		if(is_rush)
-		{
-			if (m_CancelTimer.Finished)
-			{
-				StartCoroutine(Rush());
+        if (m_bepushed)
+        {
 
-			}
-			}
-		else
-		{
-			if (m_CancelTimer.Finished)
-			{
+        }
+        else
+        {
+            GetInput();
+
+        
+
+            if (is_rush)
+		    {
+			    if (m_CancelTimer.Finished)
+			    {
+			    	StartCoroutine(Rush());
+    
+			    }
+		    }
+		    else
+		    {
+			    if (m_CancelTimer.Finished)
+			    {
 		   
-			Move();
-			}
+			    Move();
+			    }
 			
-		}
-		
-	}
+		    }
+        }
+    }
 	public void Freeze()
 	{
 		m_rb2d.velocity = new Vector2(0, 0);
@@ -191,7 +201,7 @@ public class Player : Character {
 	public void Move()
 	{
 
-		//rb2d.velocity = direction * move_speed;
+		//rb2d.velocity = m_direction * move_speed;
 		//Debug.Log(rb2d.velocity);
 		//Debug.Log(rb2d.velocity.x +","+ rb2d.velocity.y);
 		Vector3 dir = new Vector3(m_movedirection.x, m_movedirection.y, 0);
@@ -307,18 +317,18 @@ public class Player : Character {
 
 	}
 
-	public void bePushed(float pushDegree)
-	{
-		//is_move = true;
-		//AI.moveable = false;
-		//animator.SetBool("move", false);
-		//rb2d.constraints = RigidbodyConstraints2D.None;
-		Vector2 pushdirection;
-		pushdirection.x = Mathf.Cos(pushDegree);
-		pushdirection.y = Mathf.Sin(pushDegree);
-		//animator.SetTrigger("hit");
+	//public void bePushed(float pushDegree)
+	//{
+	//	//is_move = true;
+	//	//AI.moveable = false;
+	//	//animator.SetBool("move", false);
+	//	//rb2d.constraints = RigidbodyConstraints2D.None;
+	//	Vector2 pushdirection;
+	//	pushdirection.x = Mathf.Cos(pushDegree);
+	//	pushdirection.y = Mathf.Sin(pushDegree);
+	//	//animator.SetTrigger("hit");
 
-		m_rb2d.AddForce(3 * pushdirection, ForceMode2D.Impulse);
+	//	m_rb2d.AddForce(3 * pushdirection, ForceMode2D.Impulse);
 
-	}
+	//}
 }

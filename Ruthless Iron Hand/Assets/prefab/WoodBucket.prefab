@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1905145079
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dc106371a277d7142889097707b9eb66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -149,6 +149,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushed_time: {fileID: 0}
   Damage: 10
+  crush:
+  - {fileID: 8300000, guid: 9524893950bff284aab71ca81163b5de, type: 3}
+  - {fileID: 8300000, guid: 03680c600a521a144b84d1c402b356a1, type: 3}
+  - {fileID: 8300000, guid: 2432f18239768b94eaa4d30be6af5564, type: 3}
 --- !u!50 &6464993804185554539
 Rigidbody2D:
   serializedVersion: 4
@@ -157,9 +161,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6464993804185554540}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 100
   m_LinearDrag: 0

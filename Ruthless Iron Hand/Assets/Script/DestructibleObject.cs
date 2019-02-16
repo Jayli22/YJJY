@@ -41,7 +41,7 @@ public class DestructibleObject : MonoBehaviour {
              Destroy(gameObject);
         }
     }
-    public void bePushed(float pushDegree)
+    public void bePushed(Vector2 dir)
     {
         floating = true;
         animator.SetBool("Float", true);
@@ -61,10 +61,36 @@ public class DestructibleObject : MonoBehaviour {
             animator.SetBool("Destroyed",true);
             rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
             rb2d.velocity = Vector2.zero;
-
-
+            DeathExplosion();
+ 
             m_audioSource.clip = crush[Random.Range(0, crush.Length)];
             m_audioSource.Play();
         }
+    }
+
+    protected void DeathExplosion()
+    {
+        // Utils.SetBool("freeze_explosion", true);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
+        foreach (Collider2D obj in hitColliders)
+        {
+            Vector2 dir;
+            dir = obj.transform.position - transform.position;
+
+            if (obj.GetComponent<Rigidbody2D>())
+            {
+                if (obj.GetComponent<Character>())
+                {
+                    obj.GetComponent<Character>().bePushed(dir);
+                    obj.GetComponent<Character>().TakeDamage(10);
+                }
+                else if (obj.GetComponent<DestructibleObject>())
+                {
+                    obj.GetComponent<DestructibleObject>().bePushed(dir);
+                }
+                //obj.enabled = false;
+            }
+        }
+        //Destroy(gameObject);
     }
 }

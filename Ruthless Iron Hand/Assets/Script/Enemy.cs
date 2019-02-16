@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    protected Rigidbody2D m_rb2d;
-    protected Vector2 m_pushdirection;
     public Timer m_pushed_time;
     public Timer m_dizzy_time;
     protected EnemyAI m_AI;
     protected AudioSource audioSource;
-
+    protected bool m_is_float = false;
 
     //protected bool is_move;
     // Start is called before the first frame update
@@ -39,9 +37,10 @@ public class Enemy : Character
             m_AI.m_moveable = true;
             m_animator.SetBool("move", true);
             m_animator.SetBool("hit", false);
+            m_is_float = false;
 
         }
-        if(m_dizzy_time.Finished)
+        if (m_dizzy_time.Finished)
         {
             m_AI.m_moveable = true;
             m_animator.SetBool("dizzy", false);
@@ -67,19 +66,20 @@ public class Enemy : Character
 
 
 
-    public void bePushed(float pushDegree)
+    public override void bePushed(Vector2 dir)
     {
         //is_move = true;
         m_AI.m_moveable = false;
         m_animator.SetBool("move", false);
         m_pushdirection =  transform.position - Player.MyInstance.transform.position;
         m_pushdirection = m_pushdirection.normalized;
+        m_is_float = true;
 
-        //float pushAngle = Mathf.Atan2(pushdirection.y, pushdirection.x);
-        ////rb2d.constraints = RigidbodyConstraints2D.None;
-        //pushdirection.x = Mathf.Cos(pushDegree);
-        //pushdirection.y = Mathf.Sin(pushDegree);
-        m_animator.SetBool("hit",true);
+    //float pushAngle = Mathf.Atan2(pushdirection.y, pushdirection.x);
+    ////rb2d.constraints = RigidbodyConstraints2D.None;
+    //pushdirection.x = Mathf.Cos(pushDegree);
+    //pushdirection.y = Mathf.Sin(pushDegree);
+    m_animator.SetBool("hit",true);
 
         m_rb2d.AddForce(3 * m_pushdirection, ForceMode2D.Impulse);
 
@@ -94,15 +94,16 @@ public class Enemy : Character
             
 
         }
-        else if (collision.transform.tag == "Map")
+        else if (collision.transform.tag == "Map" && m_is_float)
         {
             m_AI.m_moveable = false;
             m_animator.SetBool("dizzy", true);
             m_is_dizzy = true;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
             //AI.move
+            m_rb2d.velocity = Vector2.zero;
             m_dizzy_time.Run();
-            Debug.Log("Wall");
+           // Debug.Log("Wall");
             // TakeDamage(10);
         }
     }
