@@ -9,59 +9,45 @@ public class IceGhost : Enemy
 
     private GameObject freeze_effect;
 
-    public AudioClip explosion_1;
-    public AudioClip explosion_2;
-    public AudioClip explosion_3;
-    public AudioClip explosion_4;
+    public AudioClip[] explosion;
 
     protected override void Update()
     {
 
 
-        if (Utils.GetBool("ice_explosion"))
-        {
 
-
-            audioSource.clip = explosion_4;
-            audioSource.Play();
-
-
-            Utils.SetBool("ice_explosion", false);
-        }
-
-
-        if (m_pushed_time.Finished && !m_is_dizzy)
+        if (pushed_time.Finished && !is_dizzy)
         {
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
-            m_AI.m_moveable = true;
-            m_animator.SetBool("move", true);
-            m_animator.SetBool("hit", false);
+            thisAI.moveable = true;
+            animator.SetBool("move", true);
+            animator.SetBool("hit", false);
 
         }
-        if (m_dizzy_time.Finished)
+        if (dizzy_time.Finished)
         {
-            m_AI.m_moveable = true;
-            m_animator.SetBool("dizzy", false);
-            m_rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-            m_is_dizzy = false;
+            thisAI.moveable = true;
+            animator.SetBool("dizzy", false);
+            rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+            is_dizzy = false;
         }
         if (freeze_effect != null)
             if (freeze_effect.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
             {
                 Destroy(freeze_effect);
             }
-        if (!m_is_alive)
+        if (!is_alive)
         {
             GetComponent<Collider2D>().enabled = false;
-            m_AI.m_moveable = false;
-            if (!m_animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath"))
+            thisAI.moveable = false;
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath"))
             {
-                m_animator.SetTrigger("death");
-                m_rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+                animator.SetTrigger("death");
+                rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
 
             }
-            if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath") && m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
             {
                 Destroy(gameObject);
                 //Debug.Log("destory");
@@ -79,17 +65,78 @@ public class IceGhost : Enemy
         p.x = transform.position.x;
         p.y = transform.position.y + 1;
         freeze_effect = Instantiate(m_freeze_effect, p, transform.rotation);
+        // Utils.SetBool("freeze_explosion", true);
+        int i = Random.Range(0, explosion.Length);
+        freeze_effect.GetComponent<EffectScript>().AudioSource.clip = explosion[i];
+        freeze_effect.GetComponent<EffectScript>().AudioSource.Play();
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 1);
+        foreach (Collider2D obj in hitColliders)
+        {
+            Vector2 dir;
+            dir = obj.transform.position - transform.position;
+
+            if (obj.GetComponent<Rigidbody2D>())
+            {
+                if (obj.GetComponent<Player>())
+                {
+                    obj.GetComponent<Player>().Stun(1.5f);
+                    obj.GetComponent<Player>().TakeDamage(20);
+                    obj.GetComponent<Animator>().SetBool("dizzy", true);
+
+                }
+                else if (obj.GetComponent<DestructibleObject>())
+                {
+                    obj.GetComponent<DestructibleObject>().bePushed(dir);
+                }
+                else if(obj.GetComponent<Enemy>())
+                {
+                    obj.GetComponent<Enemy>().Stun(1f);
+                    obj.GetComponent<Enemy>().TakeDamage(20);
+                    obj.GetComponent<Animator>().SetBool("dizzy", true);
+                }
+                //obj.enabled = false;
+            }
+        }
+        Destroy(gameObject);
     }
     public override void TakeDamage(int damage)
     {
         //health reduce 
-        m_currenthp -= damage;
-        if (m_currenthp <= 0)
+        currenthp -= damage;
+        if (currenthp <= 0)
         {
-            m_is_alive = false;
-            DeathExplosion();
+            is_alive = false;
+            //DeathExplosion();
             //m_animator.SetBool("death", false);
 
         }
+    }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        base.OnCollisionEnter2D(collision);
+
+        if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && is_alive)
+        {
+            Player.MyInstance.TakeDamage(1);
+            // DeathExplosion();
+
+
+        }
+        else if (collision.transform.tag == "Map" && is_float)
+        {
+            thisAI.moveable = false;
+            animator.SetBool("dizzy", true);
+            is_dizzy = true;
+            //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+            //AI.move
+            rb2d.velocity = Vector2.zero;
+            //m_dizzy_time.Run();
+            DeathExplosion();
+            //Destroy(gameObject);
+            // Debug.Log("Wall");
+            // TakeDamage(10);
+        }
+
     }
 }

@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class EffectScript : MonoBehaviour
 {
-    private Animator m_animator;
-    private AudioSource m_audioSource;
+    private Animator animator;
+    private AudioSource audioSource;
 
-    public AudioSource AudioSource { get => m_audioSource; set => m_audioSource = value; }
+    public AudioSource AudioSource { get => audioSource; set => audioSource = value; }
 
     // Start is called before the first frame update
     void Awake()
     {
-        m_animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         AudioSource = gameObject.AddComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
         {
             Destroy(gameObject);
         }

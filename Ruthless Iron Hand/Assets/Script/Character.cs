@@ -4,41 +4,41 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public int m_maxhp;
-    public int m_currenthp;
+    public int maxhp;
+    public int currenthp;
     //private int max_mp;
     //private int current_mp;
-    public float m_movespeed;
-    protected bool m_is_alive;
-    protected bool m_is_dizzy;
-    protected Animator m_animator;
-    protected bool m_bepushed;
-    protected Timer bepushed_time;
+    public float movespeed;
+    protected bool is_alive;
+    protected bool is_dizzy = false;
+    protected Animator animator;
+    protected bool bepushed;
 
-    protected Vector2 m_pushdirection;
-    protected Rigidbody2D m_rb2d;
+    protected Timer pushed_time;
+    protected Timer dizzy_time;
+
+    protected Vector2 pushdirection;
+    protected Rigidbody2D rb2d;
+
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
+       
     }
 
     protected virtual void Awake()
     {
-        m_is_alive = true;
-        m_animator = GetComponent<Animator>();
-        bepushed_time = gameObject.AddComponent<Timer>();
-        bepushed_time.Duration = 1f;
+        is_alive = true;
+        animator = GetComponent<Animator>();
+        pushed_time = gameObject.AddComponent<Timer>();
+        dizzy_time = gameObject.AddComponent<Timer>();
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (bepushed_time.Finished)
-        {
-            m_rb2d.velocity = Vector2.zero;
-            m_bepushed = false;
-        }
+        
     }
 
     protected virtual void FixedUpdate()
@@ -50,31 +50,72 @@ public class Character : MonoBehaviour
     public virtual void TakeDamage(int damage)
     {
         //health reduce 
-        m_currenthp -= damage;
-        if (m_currenthp <= 0)
+        currenthp -= damage;
+        if (currenthp <= 0)
         {
-            m_is_alive = false;
+            is_alive = false;
             //m_animator.SetBool("death", false);
 
         }
     }
 
-    public virtual void bePushed(Vector2 dir)
+    public virtual void BePushed(Vector2 dir)
     {
         //is_move = true;
         
         //m_pushdirection = transform.position - Player.MyInstance.transform.position;
         //m_pushdirection = m_pushdirection.normalized;
-        m_bepushed = true;
+        bepushed = true;
+        dir = dir.normalized;
+        ////rb2d.constraints = RigidbodyConstraints2D.None;
+        //pushdirection.x = Mathf.Cos(pushDegree);
+        //pushdirection.y = Mathf.Sin(pushDegree);
+        //float pushAngle = Mathf.Atan2(pushdirection.y, pushdirection.x);
+        //m_animator.SetBool("hit", true);
+        Debug.Log("push");
+        pushed_time.Run();
+        // m_rb2d.AddForce(3 * dir, ForceMode2D.Impulse);]
+        rb2d.velocity = 3 * dir * movespeed;
+
+    }
+    public virtual void BePushed(Vector2 dir, float floattime)
+    {
+        //is_move = true;
+
+        //m_pushdirection = transform.position - Player.MyInstance.transform.position;
+        //m_pushdirection = m_pushdirection.normalized;
+        bepushed = true;
 
         ////rb2d.constraints = RigidbodyConstraints2D.None;
         //pushdirection.x = Mathf.Cos(pushDegree);
         //pushdirection.y = Mathf.Sin(pushDegree);
         //float pushAngle = Mathf.Atan2(pushdirection.y, pushdirection.x);
-
         //m_animator.SetBool("hit", true);
-        bepushed_time.Run();
-        m_rb2d.AddForce(3 * dir, ForceMode2D.Impulse);
 
+        pushed_time.Run();
+        //m_rb2d.AddForce(3 * dir, ForceMode2D.Impulse);
+        rb2d.velocity = 3 * dir * movespeed;
+
+    }
+    public virtual void Stun(float stuntime)
+    {
+        is_dizzy = true;
+        animator.SetBool("dizzy", true);
+        rb2d.velocity = Vector2.zero;
+        dizzy_time.Duration = stuntime;
+        dizzy_time.Run();
+    }
+    public virtual void Stun()
+    {
+        is_dizzy = true;
+        animator.SetBool("dizzy", true);
+        rb2d.velocity = Vector2.zero;
+        dizzy_time.Run();
+
+    }
+    public virtual void Sober()
+    {
+        is_dizzy = false;
+        animator.SetBool("dizzy", false);
     }
 }

@@ -119,14 +119,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxhp: 30
   m_currenthp: 30
-  m_movespeed: 0
+  m_movespeed: 0.6
   m_pushed_time: {fileID: 0}
   m_dizzy_time: {fileID: 0}
   m_explosion_effect: {fileID: 2634561730566958018, guid: 30716231d7959914398bed542519f7b3,
     type: 3}
-  explosion_1: {fileID: 8300000, guid: 88f2293e4be71e54f918301fc54f8203, type: 3}
-  explosion_2: {fileID: 0}
-  explosion_3: {fileID: 0}
+  explosion:
+  - {fileID: 8300000, guid: 88f2293e4be71e54f918301fc54f8203, type: 3}
 --- !u!114 &217482717
 MonoBehaviour:
   m_ObjectHideFlags: 0

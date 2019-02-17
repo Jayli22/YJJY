@@ -116,9 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9815437d4f51314daab8ad8dc3fda53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxhp: 10
-  m_currenthp: 10
-  m_movespeed: 1
+  m_maxhp: 40
+  m_currenthp: 40
+  m_movespeed: 0.8
   m_pushed_time: {fileID: 0}
   m_dizzy_time: {fileID: 0}
 --- !u!114 &1286401069670056238

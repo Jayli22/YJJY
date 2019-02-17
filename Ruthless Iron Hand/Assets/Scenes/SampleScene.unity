@@ -419,17 +419,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 217482718, guid: dfcde72685a27ee469cab0fc4977a06a, type: 3}
-      propertyPath: explosion.Array.size
+      propertyPath: maxhp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 217482718, guid: dfcde72685a27ee469cab0fc4977a06a, type: 3}
+      propertyPath: currenthp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 217482718, guid: dfcde72685a27ee469cab0fc4977a06a, type: 3}
+      propertyPath: movespeed
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 217482718, guid: dfcde72685a27ee469cab0fc4977a06a, type: 3}
-      propertyPath: m_movespeed
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 217482718, guid: dfcde72685a27ee469cab0fc4977a06a, type: 3}
-      propertyPath: explosion.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 88f2293e4be71e54f918301fc54f8203, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcde72685a27ee469cab0fc4977a06a, type: 3}
 --- !u!1 &932942606 stripped
@@ -645,6 +645,33 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 3227305708241944360, guid: 120c15164c7fe834cabb7c3b4d2104a0,
+        type: 3}
+      propertyPath: maxhp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227305708241944360, guid: 120c15164c7fe834cabb7c3b4d2104a0,
+        type: 3}
+      propertyPath: currenthp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227305708241944360, guid: 120c15164c7fe834cabb7c3b4d2104a0,
+        type: 3}
+      propertyPath: movespeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227305708241944360, guid: 120c15164c7fe834cabb7c3b4d2104a0,
+        type: 3}
+      propertyPath: ironhandprefab
+      value: 
+      objectReference: {fileID: 4926603056662798442, guid: 06b2b9e52e3a06143961cd3bc1287130,
+        type: 3}
+    - target: {fileID: 3227305708241944360, guid: 120c15164c7fe834cabb7c3b4d2104a0,
+        type: 3}
+      propertyPath: rush_effect
+      value: 
+      objectReference: {fileID: 5177860658913009254, guid: 8339d531bc94f5745a03832cd50c2540,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 120c15164c7fe834cabb7c3b4d2104a0, type: 3}
 --- !u!1 &1908508998
@@ -874,19 +901,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1286401069670056237, guid: 36a66e8e642785c49833c2d3a55f35d4,
         type: 3}
-      propertyPath: m_movespeed
-      value: 0.8
+      propertyPath: maxhp
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1286401069670056237, guid: 36a66e8e642785c49833c2d3a55f35d4,
         type: 3}
-      propertyPath: m_maxhp
-      value: 40
+      propertyPath: currenthp
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1286401069670056237, guid: 36a66e8e642785c49833c2d3a55f35d4,
         type: 3}
-      propertyPath: m_currenthp
-      value: 40
+      propertyPath: movespeed
+      value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1286401069670056237, guid: 36a66e8e642785c49833c2d3a55f35d4,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7606331430514291748, guid: 57226d72b70e55e46b4206341085bf01,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36a66e8e642785c49833c2d3a55f35d4, type: 3}
 --- !u!1001 &2501822122851633595
@@ -956,25 +989,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6545863078535975888, guid: 43576c66d41401c47b363dc2eda87737,
+    - target: {fileID: 2346968153409304501, guid: 43576c66d41401c47b363dc2eda87737,
         type: 3}
-      propertyPath: MovingSpeed
-      value: 0
+      propertyPath: maxhp
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2346968153409304501, guid: 43576c66d41401c47b363dc2eda87737,
         type: 3}
-      propertyPath: m_maxhp
-      value: 50
+      propertyPath: currenthp
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2346968153409304501, guid: 43576c66d41401c47b363dc2eda87737,
         type: 3}
-      propertyPath: m_currenthp
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2346968153409304501, guid: 43576c66d41401c47b363dc2eda87737,
-        type: 3}
-      propertyPath: m_movespeed
-      value: 0.5
+      propertyPath: movespeed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43576c66d41401c47b363dc2eda87737, type: 3}
@@ -993,12 +1021,12 @@ PrefabInstance:
     - target: {fileID: 4537303082440340651, guid: 33cc678f15383804781488f35c32355f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.423
+      value: -0.492
       objectReference: {fileID: 0}
     - target: {fileID: 4537303082440340651, guid: 33cc678f15383804781488f35c32355f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.963
+      value: 0.987
       objectReference: {fileID: 0}
     - target: {fileID: 4537303082440340651, guid: 33cc678f15383804781488f35c32355f,
         type: 3}
@@ -1047,18 +1075,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4537303082440340653, guid: 33cc678f15383804781488f35c32355f,
         type: 3}
-      propertyPath: m_movespeed
-      value: 0.4
+      propertyPath: maxhp
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4537303082440340653, guid: 33cc678f15383804781488f35c32355f,
         type: 3}
-      propertyPath: m_maxhp
-      value: 50
+      propertyPath: currenthp
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4537303082440340653, guid: 33cc678f15383804781488f35c32355f,
         type: 3}
-      propertyPath: m_currenthp
-      value: 50
+      propertyPath: movespeed
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33cc678f15383804781488f35c32355f, type: 3}

@@ -4,60 +4,56 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    public Timer m_pushed_time;
-    public Timer m_dizzy_time;
-    protected EnemyAI m_AI;
+    
+    protected EnemyAI thisAI;
     protected AudioSource audioSource;
-    protected bool m_is_float = false;
+    protected bool is_float = false;
 
     //protected bool is_move;
     // Start is called before the first frame update
     protected override void Start()
     {
-        m_pushed_time = gameObject.AddComponent<Timer>();
-        m_dizzy_time = gameObject.AddComponent<Timer>();
+        pushed_time = gameObject.AddComponent<Timer>();
+        dizzy_time = gameObject.AddComponent<Timer>();
         audioSource = gameObject.GetComponent<AudioSource>();
 
-        m_pushed_time.Duration = 1f;
-        m_dizzy_time.Duration = 1.5f;
-        m_rb2d = GetComponent<Rigidbody2D>();
+        pushed_time.Duration = 1f;
+        dizzy_time.Duration = 1.5f;
+        rb2d = GetComponent<Rigidbody2D>();
        // is_move = false;
 
-        m_AI = GetComponent<EnemyAI>();
-        m_AI.MovingSpeed = m_movespeed;
+        thisAI = GetComponent<EnemyAI>();
+        thisAI.MovingSpeed = movespeed;
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        if (m_pushed_time.Finished && !m_is_dizzy)
+        if (pushed_time.Finished && !is_dizzy)
         {
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
-            m_AI.m_moveable = true;
-            m_animator.SetBool("move", true);
-            m_animator.SetBool("hit", false);
-            m_is_float = false;
+            thisAI.moveable = true;
+            animator.SetBool("move", true);
+            animator.SetBool("hit", false);
+            is_float = false;
 
         }
-        if (m_dizzy_time.Finished)
+        if (dizzy_time.Finished)
         {
-            m_AI.m_moveable = true;
-            m_animator.SetBool("dizzy", false);
-            m_rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-            m_is_dizzy = false;
+            Sober();
         }
-        if (!m_is_alive)
+        if (!is_alive)
         {
             GetComponent<Collider2D>().enabled = false;
-            m_AI.m_moveable = false;
-            if (!m_animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath"))
+            thisAI.moveable = false;
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath"))
             {
-                m_animator.SetTrigger("death");
-                m_rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+                animator.SetTrigger("death");
+                rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
 
             }
-            if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath") && m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
             {
                 Destroy(gameObject);
             }
@@ -66,45 +62,60 @@ public class Enemy : Character
 
 
 
-    public override void bePushed(Vector2 dir)
+    public override void BePushed(Vector2 dir)
     {
         //is_move = true;
-        m_AI.m_moveable = false;
-        m_animator.SetBool("move", false);
-        m_pushdirection =  transform.position - Player.MyInstance.transform.position;
-        m_pushdirection = m_pushdirection.normalized;
-        m_is_float = true;
+        thisAI.moveable = false;
+        //m_animator.SetBool("move", false);
+        //m_pushdirection =  transform.position - Player.MyInstance.transform.position;
+        //m_pushdirection = m_pushdirection.normalized;
+        dir = dir.normalized;
+        is_float = true;
+        pushed_time.Run();
 
-    //float pushAngle = Mathf.Atan2(pushdirection.y, pushdirection.x);
-    ////rb2d.constraints = RigidbodyConstraints2D.None;
-    //pushdirection.x = Mathf.Cos(pushDegree);
-    //pushdirection.y = Mathf.Sin(pushDegree);
-    m_animator.SetBool("hit",true);
+        //float pushAngle = Mathf.Atan2(pushdirection.y, pushdirection.x);
+        ////rb2d.constraints = RigidbodyConstraints2D.None;
+        //pushdirection.x = Mathf.Cos(pushDegree);
+        //pushdirection.y = Mathf.Sin(pushDegree);
+        animator.SetBool("hit",true);
 
-        m_rb2d.AddForce(3 * m_pushdirection, ForceMode2D.Impulse);
+        rb2d.AddForce(3 * dir, ForceMode2D.Impulse);
 
     }
 
-    
+    public override void BePushed(Vector2 dir, float floattime)
+    {
+        //is_move = true;
+        thisAI.moveable = false;
+        //m_animator.SetBool("move", false);
+        //m_pushdirection = transform.position - Player.MyInstance.transform.position;
+        //m_pushdirection = m_pushdirection.normalized;
+        dir = dir.normalized;
+        is_float = true;
+        pushed_time.Duration = floattime;
+        pushed_time.Run();
+
+        //float pushAngle = Mathf.Atan2(pushdirection.y, pushdirection.x);
+        ////rb2d.constraints = RigidbodyConstraints2D.None;
+        //pushdirection.x = Mathf.Cos(pushDegree);
+        //pushdirection.y = Mathf.Sin(pushDegree);
+        animator.SetBool("hit", true);
+
+        rb2d.AddForce(3 * dir, ForceMode2D.Impulse);
+
+    }
+
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && m_is_alive)
+        if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && is_alive)
         {
             Player.MyInstance.TakeDamage(1);
             
 
         }
-        else if (collision.transform.tag == "Map" && m_is_float)
+        else if (collision.transform.tag == "Map" && is_float)
         {
-            m_AI.m_moveable = false;
-            m_animator.SetBool("dizzy", true);
-            m_is_dizzy = true;
-            //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
-            //AI.move
-            m_rb2d.velocity = Vector2.zero;
-            m_dizzy_time.Run();
-           // Debug.Log("Wall");
-            // TakeDamage(10);
+            Stun();
         }
     }
 
@@ -123,7 +134,30 @@ public class Enemy : Character
     //    }
     //}
 
+    public override void Stun()
+    {
+        is_dizzy = true;
+        thisAI.moveable = false;
+        rb2d.velocity = Vector2.zero;
+        animator.SetBool("dizzy", true);
+        dizzy_time.Run();
 
+    }
+    public override void Sober()
+    {
+        thisAI.moveable = true;
+        animator.SetBool("dizzy", false);
+       // m_rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+        is_dizzy = false;
+    }
 
+    public void Stopmoving()
+    {
+        thisAI.moveable = false;
+    }
 
+    public void Startmoving()
+    {
+        thisAI.moveable = true;
+    }
 }

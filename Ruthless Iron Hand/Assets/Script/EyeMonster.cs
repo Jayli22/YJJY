@@ -5,59 +5,98 @@ using UnityEngine;
 public class EyeMonster : Enemy
 {
     // Start is called before the first frame update
+    private Timer shottime_cooldown;
+    private bool is_shotting = false;
+    public GameObject bulletPrefab;
+
     protected override void Start()
     {
         base.Start();
+        shottime_cooldown = gameObject.AddComponent<Timer>();
+        shottime_cooldown.Duration = 1.5f;
+        shottime_cooldown.Run();
     }
 
     // Update is called once per frame
     protected override void Update()
     {
+
+        if(is_shotting)
+        {
+            Stopmoving();
+        }
+        else
+        {
+            Startmoving();
+        }
+
+        if(shottime_cooldown.Finished)
+        {
+            StartCoroutine(Shot());
+        }
+
+
+
         Vector2 movedir = Player.MyInstance.transform.position - transform.position;
 
         if (movedir.y > 0)
         {
-            m_animator.SetBool("directionUp", true);
+            animator.SetBool("directionUp", true);
         }
         else
         {
-            m_animator.SetBool("directionUp", false);
+            animator.SetBool("directionUp", false);
 
         }
-        if (m_pushed_time.Finished && !m_is_dizzy)
+        if (pushed_time.Finished && !is_dizzy)
         {
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
-            m_AI.m_moveable = true;
+            thisAI.moveable = true;
             //m_animator.SetBool("move", true);
             
-            m_animator.SetBool("hit", false);
+            animator.SetBool("hit", false);  
 
         }
-        if (m_dizzy_time.Finished)
+        if (dizzy_time.Finished)
         {
-            m_AI.m_moveable = true;
-            m_animator.SetBool("dizzy", false);
-            m_rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-            m_is_dizzy = false;
+            thisAI.moveable = true;
+            animator.SetBool("dizzy", false);
+            rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+            is_dizzy = false;
         }
-        if (!m_is_alive)
+        if (!is_alive)
         {
             GetComponent<Collider2D>().enabled = false;
-            m_AI.m_moveable = false;
-            if (!m_animator.GetCurrentAnimatorStateInfo(0).IsName("EyeMonsterDeathDown") 
-                && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("EyeMonsterDeathUp"))
+            thisAI.moveable = false;
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("EyeMonsterDeathDown") 
+                && !animator.GetCurrentAnimatorStateInfo(0).IsName("EyeMonsterDeathUp"))
             {
-                m_animator.SetTrigger("death");
-                m_rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+                animator.SetTrigger("death");
+                rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
 
             }
-            if ((m_animator.GetCurrentAnimatorStateInfo(0).IsName("EyeMonsterDeathDown")
-                || m_animator.GetCurrentAnimatorStateInfo(0).IsName("EyeMonsterDeathUp")) 
-                && m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+            if ((animator.GetCurrentAnimatorStateInfo(0).IsName("EyeMonsterDeathDown")
+                || animator.GetCurrentAnimatorStateInfo(0).IsName("EyeMonsterDeathUp")) 
+                && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
             {
                 Destroy(gameObject);
             }
         }
+    }
+
+
+    public IEnumerator Shot()
+    {
+        shottime_cooldown.Run();
+        animator.SetBool("attack", true);
+        is_shotting = true;
+        GameObject bullet = Instantiate(bulletPrefab,transform.position,transform.rotation);
+        Vector2 dir = Player.MyInstance.transform.position - transform.position;
+        bullet.GetComponent<Rigidbody2D>().AddForce(60 * dir.normalized);
+        yield return new WaitForSeconds(0.5f);
+        is_shotting = false;
+        animator.SetBool("attack", false);
+
     }
 }

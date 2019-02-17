@@ -14,44 +14,44 @@ public class FireGhost : Enemy
 
     protected override void Update()
     {
-        if(m_bepushed)
+        if(bepushed)
         {
 
         }
         
 
-        if (m_pushed_time.Finished && !m_is_dizzy)
+        if (pushed_time.Finished && !is_dizzy)
         {
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
-            m_AI.m_moveable = true;
-            m_animator.SetBool("move", true);
-            m_animator.SetBool("hit", false);
+            thisAI.moveable = true;
+            animator.SetBool("move", true);
+            animator.SetBool("hit", false);
 
         }
-        if (m_dizzy_time.Finished)
+        if (dizzy_time.Finished)
         {
-            m_AI.m_moveable = true;
-            m_animator.SetBool("dizzy", false);
-            m_rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-            m_is_dizzy = false;
+            thisAI.moveable = true;
+            animator.SetBool("dizzy", false);
+            rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+            is_dizzy = false;
         }
         if (explosion_effect!=null )
             if(explosion_effect.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
         {
             Destroy(explosion_effect);
         }
-        if (!m_is_alive)
+        if (!is_alive)
         {
             GetComponent<Collider2D>().enabled = false;
-            m_AI.m_moveable = false;
-            if (!m_animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath"))
+            thisAI.moveable = false;
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath"))
             {
-                m_animator.SetTrigger("death");
-                m_rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+                animator.SetTrigger("death");
+                rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
 
             }
-            if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath") && m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
             {
                 Destroy(gameObject);
                 //Debug.Log("destory");
@@ -78,8 +78,8 @@ public class FireGhost : Enemy
             {
                 if (obj.GetComponent<Character>())
                 {
-                    obj.GetComponent<Character>().bePushed(dir);
-                    obj.GetComponent<Character>().TakeDamage(50);
+                    obj.GetComponent<Character>().BePushed(dir);
+                    obj.GetComponent<Character>().TakeDamage(5);
                 }
                 else if (obj.GetComponent<DestructibleObject>())
                     {
@@ -93,10 +93,10 @@ public class FireGhost : Enemy
     public override void TakeDamage(int damage)
     {
         //health reduce 
-        m_currenthp -= damage;
-        if (m_currenthp <= 0)
+        currenthp -= damage;
+        if (currenthp <= 0)
         {
-            m_is_alive = false;
+            is_alive = false;
             //m_animator.SetBool("death", false);
 
         }
@@ -107,21 +107,21 @@ public class FireGhost : Enemy
     {
         base.OnCollisionEnter2D(collision);
     
-        if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && m_is_alive)
+        if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && is_alive)
         {
             Player.MyInstance.TakeDamage(1);
            // DeathExplosion();
 
 
         }
-        else if (collision.transform.tag == "Map" && m_is_float)
+        else if (collision.transform.tag == "Map" && is_float)
         {
-            m_AI.m_moveable = false;
-            m_animator.SetBool("dizzy", true);
-            m_is_dizzy = true;
+            thisAI.moveable = false;
+            animator.SetBool("dizzy", true);
+            is_dizzy = true;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
             //AI.move
-            m_rb2d.velocity = Vector2.zero;
+            rb2d.velocity = Vector2.zero;
             //m_dizzy_time.Run();
             DeathExplosion();
             //Destroy(gameObject);

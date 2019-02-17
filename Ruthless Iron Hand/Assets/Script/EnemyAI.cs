@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour {
 
-    public bool m_moveable;
+    public bool moveable;
     public MapPathFinding PathFinding = new MapPathFinding();
     private Vector2 targetPosition;
     public bool is_move;
@@ -45,14 +45,14 @@ public class EnemyAI : MonoBehaviour {
         if (PathFinding.CellSize == default(Vector2))
             PathFinding.CellSize = PathFinding.TilemapGroup[0].CellSize;
         timer = timerrec;
-        m_moveable = true;
+        moveable = true;
     }
     private float timer ; // 定时寻路间隔时间
     [Range(0.1f,10)]
     public float timerrec = 0.1f;
     void Update()
     {
-        if(m_moveable)
+        if(moveable)
         {
 
         timer -= Time.deltaTime;
