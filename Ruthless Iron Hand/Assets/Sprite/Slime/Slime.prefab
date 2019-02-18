@@ -97,11 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d3eeb597da2e3a45b788a5653008aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxhp: 50
-  m_currenthp: 50
-  m_movespeed: 0.5
-  m_pushed_time: {fileID: 0}
-  m_dizzy_time: {fileID: 0}
+  maxhp: 10
+  currenthp: 10
+  movespeed: 1
 --- !u!114 &6545863078535975888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54475153a03bb45489725c56dd0baf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveable: 0
+  moveable: 0
   PathFinding:
     HeuristicType: 1
     MaxDistance: 0

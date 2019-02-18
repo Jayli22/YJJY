@@ -107,12 +107,14 @@
     <Compile Include="Assets\Script\EffectScript.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\EnemyAI.cs" />
+    <Compile Include="Assets\Script\EnemyGenerator.cs" />
     <Compile Include="Assets\Script\EyeMonster.cs" />
     <Compile Include="Assets\Script\FireGhost.cs" />
     <Compile Include="Assets\Script\IceGhost.cs" />
     <Compile Include="Assets\Script\Ironhand.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\Slime.cs" />
+    <Compile Include="Assets\Script\SummonEffect.cs" />
     <Compile Include="Assets\Script\Timer.cs" />
     <Compile Include="Assets\Script\UIManagement.cs" />
     <Compile Include="Assets\Script\Utils.cs" />

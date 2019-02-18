@@ -117,11 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f561b73875486cb4f8957928969d5932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxhp: 30
-  m_currenthp: 30
-  m_movespeed: 0.6
-  m_pushed_time: {fileID: 0}
-  m_dizzy_time: {fileID: 0}
+  maxhp: 10
+  currenthp: 10
+  movespeed: 1
   m_explosion_effect: {fileID: 2634561730566958018, guid: 30716231d7959914398bed542519f7b3,
     type: 3}
   explosion:
@@ -138,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54475153a03bb45489725c56dd0baf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveable: 0
+  moveable: 0
   PathFinding:
     HeuristicType: 1
     MaxDistance: 0
@@ -223,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54475153a03bb45489725c56dd0baf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveable: 0
+  moveable: 0
   PathFinding:
     HeuristicType: 1
     MaxDistance: 0

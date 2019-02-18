@@ -24,12 +24,11 @@ public class Bullet : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D coll)
 	{
-		if(coll.gameObject.CompareTag("player")&&!friendly)
+		if(coll.gameObject.CompareTag("Player")&&!friendly)
 		{
-			Player playerScript = coll.gameObject.GetComponent<Player>();
-			playerScript.getHurt(damagePoint);
+            Player.MyInstance.TakeDamage(1);
 		}
-		if(coll.gameObject.CompareTag("Map")|| coll.gameObject.CompareTag("stone"))
+		if(coll.gameObject.CompareTag("Map"))
 		{
 		}
         Destroy(gameObject);
