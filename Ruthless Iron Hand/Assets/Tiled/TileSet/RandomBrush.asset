@@ -20,21 +20,55 @@ MonoBehaviour:
   m_showInPalette: 1
   RandomTiles: 
   RandomTileList:
+  - tileData: 20
+    probabilityFactor: 1
+  - tileData: 21
+    probabilityFactor: 1
+  - tileData: 22
+    probabilityFactor: 1
+  - tileData: 23
+    probabilityFactor: 1
+  - tileData: 24
+    probabilityFactor: 1
+  - tileData: 25
+    probabilityFactor: 0.013
+  - tileData: 26
+    probabilityFactor: 0.011
+  - tileData: 36
+    probabilityFactor: 1
+  - tileData: 37
+    probabilityFactor: 1
+  - tileData: 38
+    probabilityFactor: 1
+  - tileData: 39
+    probabilityFactor: 0.111
+  - tileData: 40
+    probabilityFactor: 1
+  - tileData: 41
+    probabilityFactor: 1
+  - tileData: 42
+    probabilityFactor: 1
+  - tileData: 43
+    probabilityFactor: 1
+  - tileData: 52
+    probabilityFactor: 1
+  - tileData: 53
+    probabilityFactor: 1
+  - tileData: 54
+    probabilityFactor: 1
+  - tileData: 55
+    probabilityFactor: 1
+  - tileData: 56
+    probabilityFactor: 0.142
+  - tileData: 57
+    probabilityFactor: 0.487
+  - tileData: 58
+    probabilityFactor: 0.693
+  - tileData: 59
+    probabilityFactor: 0.568
   - tileData: 68
     probabilityFactor: 1
   - tileData: 69
-    probabilityFactor: 1
-  - tileData: 70
-    probabilityFactor: 1
-  - tileData: 71
-    probabilityFactor: 1
-  - tileData: 84
-    probabilityFactor: 1
-  - tileData: 85
-    probabilityFactor: 1
-  - tileData: 86
-    probabilityFactor: 1
-  - tileData: 87
     probabilityFactor: 1
   RandomizeFlagMask: 3758096384
   RemoveBrushIdAfterRefresh: 0

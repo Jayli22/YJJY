@@ -17,6 +17,7 @@ public class CameraControl : MonoBehaviour
 
     void Start()
     {
+        Bounds = GameObject.FindGameObjectWithTag("CameraBound").GetComponent<BoxCollider>();
         _min = Bounds.bounds.min;//初始化边界最小值(边界左下角)
         _max = Bounds.bounds.max;//初始化边界最大值(边界右上角)
         IsFollowing = true;//默认为跟随
