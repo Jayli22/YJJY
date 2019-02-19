@@ -91,7 +91,7 @@ public class Character : MonoBehaviour
         //pushdirection.y = Mathf.Sin(pushDegree);
         //float pushAngle = Mathf.Atan2(pushdirection.y, pushdirection.x);
         //m_animator.SetBool("hit", true);
-
+        pushed_time.Duration = floattime;
         pushed_time.Run();
         //m_rb2d.AddForce(3 * dir, ForceMode2D.Impulse);
         rb2d.velocity = 3 * dir * movespeed;

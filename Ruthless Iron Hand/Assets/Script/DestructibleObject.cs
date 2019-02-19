@@ -62,7 +62,7 @@ public class DestructibleObject : MonoBehaviour {
     }
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if (floating)
+        if (floating && coll.collider.tag != "Void")
         {
             animator.SetBool("Destroyed",true);
             rb2d.constraints = RigidbodyConstraints2D.FreezeAll;

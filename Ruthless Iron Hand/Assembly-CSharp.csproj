@@ -113,6 +113,7 @@
     <Compile Include="Assets\Script\IceGhost.cs" />
     <Compile Include="Assets\Script\Ironhand.cs" />
     <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\RockHandEffect.cs" />
     <Compile Include="Assets\Script\RockIronGiant.cs" />
     <Compile Include="Assets\Script\Slime.cs" />
     <Compile Include="Assets\Script\SummonEffect.cs" />
