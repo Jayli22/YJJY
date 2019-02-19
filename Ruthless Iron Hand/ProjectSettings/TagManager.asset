@@ -28,7 +28,7 @@ TagManager:
   - Map
   - BarriedObject
   - Effect
-  - 
+  - Void
   - 
   - 
   - 
@@ -52,6 +52,9 @@ TagManager:
     locked: 0
   - name: EffectBottom
     uniqueID: 2910624397
+    locked: 0
+  - name: Boss
+    uniqueID: 2396366643
     locked: 0
   - name: Wall
     uniqueID: 285782331

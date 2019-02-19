@@ -3,36 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestructibleObject : MonoBehaviour {
-    Rigidbody2D rb2d;
-    Vector2 pushdirection;
-    public Timer pushed_time;   // 被击飞时间
+    protected Rigidbody2D rb2d;
+    protected Vector2 pushDirection;
+   // public Timer pushed_time;   // 被击飞时间
     public int Damage;
     private bool floating;  // is pushed or not
-    private Animator animator;
+    protected Animator animator;
     protected AudioSource audioSource; // music source
 
     public AudioClip[] crush;
  
 
     // Use this for initialization
-    void Start () {
+   public virtual void Start () {
         audioSource = gameObject.AddComponent<AudioSource>();
-        pushed_time = gameObject.AddComponent<Timer>();
-        pushed_time.Duration = 1f; 
+      //  pushed_time = gameObject.AddComponent<Timer>();
+      //  pushed_time.Duration = 1f; 
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         floating = false;
     }
 	
 	// Update is called once per frame
-	void Update () {
-       if(pushed_time.Finished)
-        {
-            rb2d.constraints = RigidbodyConstraints2D.FreezeAll; // 
-        }
+	public virtual void Update () {
+       //if(pushed_time.Finished)
+       // {
+       //     rb2d.velocity = Vector2.zero;
+       //     rb2d.constraints = RigidbodyConstraints2D.FreezeAll; // 
+       // }
     }
 
-    public void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         if(animator.GetCurrentAnimatorStateInfo(0).IsName("BoxDestruction")  //判断破坏动画是否播放完毕
             && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >1.0f)
@@ -40,29 +41,29 @@ public class DestructibleObject : MonoBehaviour {
              Destroy(gameObject);
         }
     }
-    public void bePushed(Vector2 dir)  //被击飞方法
+    public virtual void bePushed(Vector2 dir)  //被击飞方法
     {
         floating = true;
         animator.SetBool("Float", true); 
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation; 
 
-        pushed_time.Run();
+      //  pushed_time.Run();
         rb2d.velocity = dir * 5f;
 
     }
-    public void bePushed(Vector2 dir,float pushedtime)  //被击飞方法
+    public virtual void bePushed(Vector2 dir,float pushedtime)  //被击飞方法
     {
         floating = true;
         animator.SetBool("Float", true);
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-        pushed_time.Duration = pushedtime;
-        pushed_time.Run();
+     //   pushed_time.Duration = pushedtime;
+     //   pushed_time.Run();
         rb2d.velocity = dir * 5f;
 
     }
-    private void OnCollisionEnter2D(Collision2D coll)
+    protected virtual void OnCollisionEnter2D(Collision2D coll)
     {
-        if (floating && coll.collider.tag != "Void")
+        if (floating)
         {
             animator.SetBool("Destroyed",true);
             rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -74,7 +75,7 @@ public class DestructibleObject : MonoBehaviour {
         }
     }
 
-    protected void DeathExplosion()   //破坏时爆炸方法
+    protected virtual void DeathExplosion()   //破坏时爆炸方法
     {
         // Utils.SetBool("freeze_explosion", true);
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);  //获取被破坏时范围内的所有物体，第一个参数为本身位置，第二个参数为判断半径

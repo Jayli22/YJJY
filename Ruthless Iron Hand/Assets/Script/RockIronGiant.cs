@@ -18,6 +18,8 @@ public class RockIronGiant : Character
         ShootAction();
         ShotPosition= transform.position;
         ShotPosition.x = ShotPosition.x + 1.3f;
+        ShotEnemy();
+
     }
 
     // Update is called once per frame
@@ -34,7 +36,8 @@ public class RockIronGiant : Character
             animator.SetBool("Shooting", true);
             int i = Random.Range(1,5);
             StartCoroutine(Shoot(i));
-            
+
+
         }
         if(animator.GetCurrentAnimatorStateInfo(0).IsName("RockIronGiantRightAttack")
             && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
@@ -302,7 +305,10 @@ public class RockIronGiant : Character
     public void ShotEnemy()
     {
         animator.SetTrigger("StartShoot");
-
+        GameObject enemy1 = Instantiate(enemyPrefabList[1], ShotPosition, transform.rotation);
+        enemy1.AddComponent<EnemyShoot>();
+        enemy1.GetComponent<EnemyShoot>().SetLandPosition(EnemyGenerator.MyInstance.ChoosePosition());
+        enemy1.GetComponent<EnemyAI>().moveable = false;
     }
 
     public void RightHandAttack()
@@ -323,7 +329,7 @@ public class RockIronGiant : Character
     {
 
         Vector2 degree = Quaternion.AngleAxis(angle,Vector3.forward)*d;
-        Debug.Log(Mathf.Cos(angle));
+        //Debug.Log(Mathf.Cos(angle));
         return degree;
     }
 }

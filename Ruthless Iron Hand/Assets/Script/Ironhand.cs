@@ -55,15 +55,18 @@ public class Ironhand : MonoBehaviour {
         {
             //Debug.Log("Barrier collider");
             Rigidbody2D target_rb2d = coll.gameObject.GetComponent<Rigidbody2D>();
-           // coll.gameObject.GetComponent<DestructibleObject>().m_pushed_time.Run();
-            coll.gameObject.GetComponent<DestructibleObject>().bePushed(m_pushdirection);
+            // coll.gameObject.GetComponent<DestructibleObject>().m_pushed_time.Run();
+            Vector2 dir = coll.transform.position - transform.position;
+            coll.gameObject.GetComponent<DestructibleObject>().bePushed(dir);
             //PushAway(pushDegree, target_rb2d);
         }
         else if (coll.gameObject.CompareTag("Enemy"))
         {
             //Debug.Log("Enemy collider");
             Rigidbody2D target_rb2d = coll.gameObject.GetComponent<Rigidbody2D>();
-            coll.gameObject.GetComponent<Enemy>().BePushed(m_pushdirection);
+            Vector2 dir = coll.transform.position - transform.position;
+
+            coll.gameObject.GetComponent<Enemy>().BePushed(dir);
             coll.GetComponent<Enemy>().TakeDamage(10);
             
             //PushAway(pushDegree, target_rb2d);
