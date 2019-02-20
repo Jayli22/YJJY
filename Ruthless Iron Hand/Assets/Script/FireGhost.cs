@@ -24,6 +24,7 @@ public class FireGhost : Enemy
         {
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+            rb2d.velocity = Vector2.zero;
             thisAI.moveable = true;
             animator.SetBool("move", true);
             animator.SetBool("hit", false);
@@ -31,10 +32,7 @@ public class FireGhost : Enemy
         }
         if (dizzy_time.Finished)
         {
-            thisAI.moveable = true;
-            animator.SetBool("dizzy", false);
-            rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-            is_dizzy = false;
+            Sober();
         }
         if (explosion_effect!=null )
             if(explosion_effect.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
@@ -116,12 +114,9 @@ public class FireGhost : Enemy
         }
         else if (collision.transform.tag == "Map" && is_float)
         {
-            thisAI.moveable = false;
-            animator.SetBool("dizzy", true);
-            is_dizzy = true;
+            Stun();
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
-            //AI.move
-            rb2d.velocity = Vector2.zero;
+            //rb2d.velocity = Vector2.zero;
             //m_dizzy_time.Run();
             DeathExplosion();
             //Destroy(gameObject);

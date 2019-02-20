@@ -100,8 +100,10 @@
     <Compile Include="Assets\Script\AudioManagement.cs" />
     <Compile Include="Assets\Script\Bullet.cs" />
     <Compile Include="Assets\Script\CameraControl.cs" />
+    <Compile Include="Assets\Script\ChangeLevel.cs" />
     <Compile Include="Assets\Script\ChangeScene.cs" />
     <Compile Include="Assets\Script\Character.cs" />
+    <Compile Include="Assets\Script\ClickController.cs" />
     <Compile Include="Assets\Script\Constants.cs" />
     <Compile Include="Assets\Script\DestructibleObject.cs" />
     <Compile Include="Assets\Script\EffectScript.cs" />
@@ -112,12 +114,16 @@
     <Compile Include="Assets\Script\EyeMonster.cs" />
     <Compile Include="Assets\Script\FireGhost.cs" />
     <Compile Include="Assets\Script\FloatPillar.cs" />
+    <Compile Include="Assets\Script\GameManagement.cs" />
     <Compile Include="Assets\Script\IceGhost.cs" />
     <Compile Include="Assets\Script\Ironhand.cs" />
     <Compile Include="Assets\Script\Pillar.cs" />
     <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\PortalIn.cs" />
+    <Compile Include="Assets\Script\PortalOut.cs" />
     <Compile Include="Assets\Script\RockHandEffect.cs" />
     <Compile Include="Assets\Script\RockIronGiant.cs" />
+    <Compile Include="Assets\Script\SceneStart.cs" />
     <Compile Include="Assets\Script\Slime.cs" />
     <Compile Include="Assets\Script\SummonEffect.cs" />
     <Compile Include="Assets\Script\Timer.cs" />

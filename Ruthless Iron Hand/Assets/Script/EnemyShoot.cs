@@ -12,7 +12,7 @@ public class EnemyShoot : MonoBehaviour
     void Start()
     {
         changeTimer = gameObject.AddComponent<Timer>();
-        changeTimer.Duration = 0.05f;
+        changeTimer.Duration = 0.01f;
         changeTimer.Run();
         startPosition = transform.position;
         t = 0;
@@ -25,7 +25,12 @@ public class EnemyShoot : MonoBehaviour
         {
             changeTimer.Run();
             transform.position =  Vector2.Lerp(startPosition, landPosition, t);
-            t += 0.05f;
+            t += 0.01f;
+            //Debug.Log(t);
+        }
+        if(t >= 1)
+        {
+            Destroy(GetComponent<EnemyShoot>());
         }
     }
 
