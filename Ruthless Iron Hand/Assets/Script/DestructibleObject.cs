@@ -48,7 +48,7 @@ public class DestructibleObject : MonoBehaviour {
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation; 
 
       //  pushed_time.Run();
-        rb2d.velocity = dir * 5f;
+        rb2d.velocity = dir * 8f;
 
     }
     public virtual void bePushed(Vector2 dir,float pushedtime)  //被击飞方法
@@ -58,7 +58,7 @@ public class DestructibleObject : MonoBehaviour {
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
      //   pushed_time.Duration = pushedtime;
      //   pushed_time.Run();
-        rb2d.velocity = dir * 5f;
+        rb2d.velocity = dir * 8f;
 
     }
     protected virtual void OnCollisionEnter2D(Collision2D coll)
@@ -100,4 +100,6 @@ public class DestructibleObject : MonoBehaviour {
         }
         //Destroy(gameObject);
     }
+
+   
 }

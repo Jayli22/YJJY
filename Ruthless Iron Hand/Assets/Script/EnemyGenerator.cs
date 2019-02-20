@@ -49,7 +49,10 @@ public class EnemyGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!tilemapGroup)
+        {
+            tilemapGroup = FindObjectOfType<TilemapGroup>();
+        }
     }
 
 
@@ -57,21 +60,29 @@ public class EnemyGenerator : MonoBehaviour
     {
         Vector2 position;
         int x = Random.Range(tilemapGroup.Tilemaps[0].MinGridX, tilemapGroup.Tilemaps[0].MaxGridX);
-        Debug.Log(tilemapGroup.Tilemaps[0].MinGridX + "," + tilemapGroup.Tilemaps[0].MaxGridX);
-        Debug.Log(tilemapGroup.Tilemaps[0].MinGridY + "," + tilemapGroup.Tilemaps[0].MaxGridY);
+        //Debug.Log(tilemapGroup.Tilemaps[0].MinGridX + "," + tilemapGroup.Tilemaps[0].MaxGridX);
+       // Debug.Log(tilemapGroup.Tilemaps[0].MinGridY + "," + tilemapGroup.Tilemaps[0].MaxGridY);
         //Debug.Log(tilemapGroup.Tilemaps[0].GetTile(0, 0).uv);
         int y = Random.Range(tilemapGroup.Tilemaps[0].MinGridY, tilemapGroup.Tilemaps[0].MaxGridY);
         while (tilemapGroup.Tilemaps[0].GetTile(x, y) == null)
         {
             x = Random.Range(tilemapGroup.Tilemaps[0].MinGridX, tilemapGroup.Tilemaps[0].MaxGridX);
             y = Random.Range(tilemapGroup.Tilemaps[0].MinGridY, tilemapGroup.Tilemaps[0].MaxGridY);
-            Debug.Log(tilemapGroup.Tilemaps[0].GetTile(-7, 1));
+          //  Debug.Log(tilemapGroup.Tilemaps[0].GetTile(-7, 1));
 
         }
 
         position = TilemapUtils.GetTileCenterPosition(tilemapGroup["Ground"], x, y);
         
-        Debug.Log(TilemapUtils.GetTileCenterPosition(tilemapGroup["Ground"], x, y) +"x:" +x + "y:" +y);
+        //Debug.Log(TilemapUtils.GetTileCenterPosition(tilemapGroup["Ground"], x, y) +"x:" +x + "y:" +y);
         return position;
+    }
+
+    public void SetTileMap()
+    {
+        if (!tilemapGroup)
+        {
+            tilemapGroup = FindObjectOfType<TilemapGroup>();
+        }
     }
 }
