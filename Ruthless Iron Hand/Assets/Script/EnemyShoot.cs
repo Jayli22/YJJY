@@ -7,10 +7,7 @@ public class EnemyShoot : MonoBehaviour
     private Vector2 landPosition;
     private Vector2 startPosition;
     private Timer changeTimer;
-    public GameObject targetPrefab;
     private float t;
-    private bool isTarget = false;
-    private GameObject target;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,23 +16,16 @@ public class EnemyShoot : MonoBehaviour
         changeTimer.Run();
         startPosition = transform.position;
         t = 0;
-        targetPrefab = Resources.Load("Target") as GameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (!isTarget)
-        {
-            target = Instantiate(targetPrefab, landPosition, transform.rotation);
-            isTarget = true;
-
-        }
-        if (changeTimer.Finished)
+        if(changeTimer.Finished)
         {
             changeTimer.Run();
             transform.position =  Vector2.Lerp(startPosition, landPosition, t);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -56,6 +46,9 @@ public class EnemyShoot : MonoBehaviour
 >>>>>>> parent of 62220435... Wrong
 =======
 >>>>>>> parent of 62220435... Wrong
+=======
+            t += 0.05f;
+>>>>>>> parent of fe1c40ec... Merge branch 'DevJy' of https://github.com/Jayli22/YJJY into DevJy
         }
     }
 
