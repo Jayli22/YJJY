@@ -111,15 +111,21 @@ MonoBehaviour:
     width: 1727
     height: 1276
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_MinSize: {x: 711, y: 474}
   m_MaxSize: {x: 18006, y: 14024}
   vertical: 1
   controlID: 33
 =======
+=======
+>>>>>>> parent of 62220435... Wrong
   m_MinSize: {x: 713, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 1
   controlID: 130
+<<<<<<< HEAD
+>>>>>>> parent of 62220435... Wrong
+=======
 >>>>>>> parent of 62220435... Wrong
 --- !u!114 &6
 MonoBehaviour:
@@ -144,10 +150,17 @@ MonoBehaviour:
     width: 1727
     height: 1276
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_MinSize: {x: 711, y: 474}
   m_MaxSize: {x: 18006, y: 14024}
   vertical: 0
   controlID: 34
+=======
+  m_MinSize: {x: 713, y: 498}
+  m_MaxSize: {x: 18008, y: 14048}
+  vertical: 0
+  controlID: 131
+>>>>>>> parent of 62220435... Wrong
 =======
   m_MinSize: {x: 713, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
@@ -176,15 +189,21 @@ MonoBehaviour:
     width: 425
     height: 1276
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_MinSize: {x: 232, y: 474}
   m_MaxSize: {x: 10002, y: 14024}
   vertical: 1
   controlID: 104
 =======
+=======
+>>>>>>> parent of 62220435... Wrong
   m_MinSize: {x: 232, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
   controlID: 27
+<<<<<<< HEAD
+>>>>>>> parent of 62220435... Wrong
+=======
 >>>>>>> parent of 62220435... Wrong
 --- !u!114 &8
 MonoBehaviour:
@@ -264,7 +283,11 @@ MonoBehaviour:
   m_MaxSize: {x: 4004, y: 8024}
   vertical: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 84
+=======
+  controlID: 132
+>>>>>>> parent of 62220435... Wrong
 =======
   controlID: 132
 >>>>>>> parent of 62220435... Wrong
@@ -461,6 +484,7 @@ MonoBehaviour:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_SelectedIDs: 6e130000
       m_LastClickedID: 0
       m_ExpandedIDs: 10f0fffff0f1ffff2ef3ffff38f3ffff44f3ffffd4fbffff
@@ -477,6 +501,15 @@ MonoBehaviour:
         m_Name: CameraBound
         m_OriginalName: CameraBound
 >>>>>>> parent of 62220435... Wrong
+=======
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: aafbffffd4fbffff
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: CameraBound
+        m_OriginalName: CameraBound
+>>>>>>> parent of 62220435... Wrong
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
@@ -484,7 +517,11 @@ MonoBehaviour:
           width: 0
           height: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
         m_UserData: 14736
+=======
+        m_UserData: -1208
+>>>>>>> parent of 62220435... Wrong
 =======
         m_UserData: -1208
 >>>>>>> parent of 62220435... Wrong
@@ -539,11 +576,19 @@ MonoBehaviour:
     m_SearchArea: 1
     m_Folders:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 41
   m_LastFolders:
   - Assets/Scenes
+=======
+    - Assets/Script
+  m_ViewMode: 1
+  m_StartGridSize: 41
+  m_LastFolders:
+  - Assets/Script
+>>>>>>> parent of 62220435... Wrong
 =======
     - Assets/Script
   m_ViewMode: 1
@@ -558,15 +603,21 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
 <<<<<<< HEAD
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: ca150000
     m_LastClickedID: 5578
     m_ExpandedIDs: 000000008a0a0000320b0000600c0000bc0c0000920d0000a20f0000e60f0000fa0f0000581000006c1000007e10000088120000b81200006c14000000ca9a3b
 =======
+=======
+>>>>>>> parent of 62220435... Wrong
     scrollPos: {x: 0, y: 102}
     m_SelectedIDs: 4a120000
     m_LastClickedID: 4682
     m_ExpandedIDs: 00000000860a00002e0b00005c0c0000b80c00008e0d00009e0f0000e20f0000f60f000054100000681000007a10000082120000b21200006614000000ca9a3b
+<<<<<<< HEAD
+>>>>>>> parent of 62220435... Wrong
+=======
 >>>>>>> parent of 62220435... Wrong
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -596,7 +647,11 @@ MonoBehaviour:
     m_SelectedIDs: 7acffcff
     m_LastClickedID: -209030
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 000000008a0a0000320b0000600c0000bc0c0000920d0000a20f0000e60f0000fa0f0000581000006c1000007e10000088120000b81200006c140000
+=======
+    m_ExpandedIDs: 00000000860a00002e0b0000c00b00005c0c0000b80c00008e0d00009e0f0000e20f0000f60f000054100000681000007a10000082120000b212000066140000
+>>>>>>> parent of 62220435... Wrong
 =======
     m_ExpandedIDs: 00000000860a00002e0b0000c00b00005c0c0000b80c00008e0d00009e0f0000e20f0000f60f000054100000681000007a10000082120000b212000066140000
 >>>>>>> parent of 62220435... Wrong
@@ -1220,7 +1275,11 @@ MonoBehaviour:
     m_SelectedIDs: 6a2e0000
     m_LastClickedID: 11882
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 000000008a0a0000320b0000600c0000bc0c0000920d0000a20f0000e60f0000fa0f0000581000006c1000007e10000088120000b81200006c140000
+=======
+    m_ExpandedIDs: 00000000860a00002e0b0000c00b00005c0c0000b80c00008e0d00009e0f0000e20f0000f60f000054100000681000007a10000082120000b212000066140000
+>>>>>>> parent of 62220435... Wrong
 =======
     m_ExpandedIDs: 00000000860a00002e0b0000c00b00005c0c0000b80c00008e0d00009e0f0000e20f0000f60f000054100000681000007a10000082120000b212000066140000
 >>>>>>> parent of 62220435... Wrong
@@ -1252,7 +1311,11 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 000000008a0a0000320b0000600c0000bc0c0000920d0000a20f0000e60f0000fa0f0000581000006c1000007e10000088120000b81200006c140000
+=======
+    m_ExpandedIDs: 00000000860a00002e0b0000c00b00005c0c0000b80c00008e0d00009e0f0000e20f0000f60f000054100000681000007a10000082120000b212000066140000
+>>>>>>> parent of 62220435... Wrong
 =======
     m_ExpandedIDs: 00000000860a00002e0b0000c00b00005c0c0000b80c00008e0d00009e0f0000e20f0000f60f000054100000681000007a10000082120000b212000066140000
 >>>>>>> parent of 62220435... Wrong

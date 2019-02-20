@@ -37,7 +37,10 @@ public class EnemyShoot : MonoBehaviour
             changeTimer.Run();
             transform.position =  Vector2.Lerp(startPosition, landPosition, t);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 62220435... Wrong
 =======
 >>>>>>> parent of 62220435... Wrong
             t += 0.01f;
@@ -47,7 +50,10 @@ public class EnemyShoot : MonoBehaviour
         {
             Destroy(GetComponent<EnemyShoot>());
 <<<<<<< HEAD
+<<<<<<< HEAD
             Destroy(target);
+=======
+>>>>>>> parent of 62220435... Wrong
 =======
 >>>>>>> parent of 62220435... Wrong
         }
