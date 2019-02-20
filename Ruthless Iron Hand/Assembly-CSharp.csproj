@@ -99,6 +99,7 @@
     <Compile Include="Assets\CreativeSpore\SuperTilemapEditor\Scripts\Utils\TilemapVertexPaintUtils.cs" />
     <Compile Include="Assets\Script\AudioManagement.cs" />
     <Compile Include="Assets\Script\Bullet.cs" />
+    <Compile Include="Assets\Script\CamearBound.cs" />
     <Compile Include="Assets\Script\CameraControl.cs" />
     <Compile Include="Assets\Script\ChangeLevel.cs" />
     <Compile Include="Assets\Script\ChangeScene.cs" />
