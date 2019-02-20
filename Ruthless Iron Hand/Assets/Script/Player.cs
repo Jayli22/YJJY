@@ -35,16 +35,10 @@ public class Player : Character {
 
 	public bool Hitable { get => hitable; set => hitable = value; }
 
-    protected override void Awake()
-    {
-        base.Awake();
-        DontDestroyOnLoad(gameObject);
-
-    }
 
 
-    // Use this for initialization
-    protected override void Start () {
+	// Use this for initialization
+	protected override void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
 		//playerMoveUnitsPerSecond = 20;
 		coolDownTimer = gameObject.AddComponent<Timer>();
@@ -162,8 +156,6 @@ public class Player : Character {
 
 		if (Input.GetMouseButtonDown(1) && canPush )
 		{
-            
-
 			animator.SetTrigger("Attack");
 			cancel_attack_Timer.Run();
             Utils.SetBool("ironhand_attack", true);

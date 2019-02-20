@@ -28,15 +28,13 @@ public class Bullet : MonoBehaviour {
 		{
             Player.MyInstance.TakeDamage(1);
 		}
-		if(!coll.gameObject.CompareTag("Enemy") && !coll.gameObject.CompareTag("Void") && !coll.gameObject.CompareTag("CameraBound"))
+		if(!coll.gameObject.CompareTag("Enemy") && !coll.gameObject.CompareTag("Void"))
 		{
             Destroy(gameObject);
 
         }
 
     }
-
-   
     public void bePushed(float pushDegree)
 	{
 		//friendly = true;
