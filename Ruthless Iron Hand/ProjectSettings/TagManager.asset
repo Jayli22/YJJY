@@ -10,6 +10,7 @@ TagManager:
   - Map
   - CameraBound
   - Void
+  - Portal
   layers:
   - Default
   - TransparentFX

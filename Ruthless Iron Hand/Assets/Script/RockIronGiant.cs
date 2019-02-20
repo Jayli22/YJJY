@@ -18,7 +18,7 @@ public class RockIronGiant : Character
         ShootAction();
         ShotPosition= transform.position;
         ShotPosition.x = ShotPosition.x + 1.3f;
-        ShotEnemy();
+        //ShotEnemy();
 
     }
 
