@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 217482717}
   - component: {fileID: 8613602579152997550}
   - component: {fileID: 3293306012479279094}
+  - component: {fileID: 1046938799}
   - component: {fileID: 1819697116}
   m_Layer: 13
   m_Name: FireGhost
@@ -184,7 +185,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -208,6 +209,36 @@ PolygonCollider2D:
     - - {x: 0.021205366, y: 0.0036551952}
       - {x: -0.05199659, y: -0.0009174347}
       - {x: 0.014924705, y: 0.032158375}
+--- !u!114 &1046938799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9055090638414194893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54475153a03bb45489725c56dd0baf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveable: 0
+  PathFinding:
+    HeuristicType: 1
+    MaxDistance: 0
+    PassableDetectionMode: 1
+    RaycastDetectionLayerMask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    TilemapGroup: {fileID: 0}
+    AllowDiagonals: 1
+    AllowBlockedDestination: 0
+    m_cellSize: {x: 0, y: 0}
+  is_move: 0
+  ComputeMode: 1
+  AsyncCoroutineIterations: 20
+  MovingSpeed: 0
+  ReachNodeDistance: 0.1
+  timerrec: 0.1
 --- !u!82 &1819697116
 AudioSource:
   m_ObjectHideFlags: 0
