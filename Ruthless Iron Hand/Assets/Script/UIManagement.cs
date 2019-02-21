@@ -15,32 +15,32 @@ public class UIManagement : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        maxhp_number = Player.MyInstance.maxhp;
-        curhp_number = Player.MyInstance.currenthp;
-        GameObject hpbar = GameObject.Find("HPbar");
-        maxhp_array = new Image[maxhp_number];
-        for (int i = 0; i < curhp_number; i++)
-        {
-            maxhp_array[i] = Instantiate(hpheart);
-            maxhp_array[i].transform.SetParent(hpbar.transform, false);
-            //maxhp_array[i].transform.position += new Vector3(0.0f, uistartPosInVertical * i, 0.0f);
+        //maxhp_number = Player.MyInstance.maxhp;
+        //curhp_number = Player.MyInstance.currenthp;
+        //GameObject hpbar = GameObject.Find("HPbar");
+        //maxhp_array = new Image[maxhp_number];
+        //for (int i = 0; i < curhp_number; i++)
+        //{
+        //    maxhp_array[i] = Instantiate(hpheart);
+        //    maxhp_array[i].transform.SetParent(hpbar.transform, false);
+        //    //maxhp_array[i].transform.position += new Vector3(0.0f, uistartPosInVertical * i, 0.0f);
 
-        }
+        //}
         
      
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        curhp_number = Player.MyInstance.currenthp;
+    //void Update()
+    //{
+    //    curhp_number = Player.MyInstance.currenthp;
 
-        for (int j = curhp_number; j < maxhp_number; j++)
-        {
-            //maxhp_array[j] = Instantiate(empty_hpheart);
-            // maxhp_array[j].transform.SetParent(hpbar.transform, false);
-            maxhp_array[j].GetComponent<Image>().overrideSprite = empty_hpheart.sprite;
+    //    for (int j = curhp_number; j < maxhp_number; j++)
+    //    {
+    //        //maxhp_array[j] = Instantiate(empty_hpheart);
+    //        // maxhp_array[j].transform.SetParent(hpbar.transform, false);
+    //        //maxhp_array[j].GetComponent<Image>().overrideSprite = empty_hpheart.sprite;
             
-        }
-    }
+    //    }
+    //}
 }

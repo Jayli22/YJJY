@@ -42,6 +42,14 @@ public class Enemy : Character
         if (dizzy_time.Finished)
         {
             Sober();
+            if(!pushed_time.Finished)
+            {
+                thisAI.moveable = true;
+                rb2d.velocity = Vector2.zero;
+                animator.SetBool("move", true);
+                animator.SetBool("hit", false);
+                is_float = false;
+            }
         }
         if (!is_alive)
         {
@@ -141,6 +149,7 @@ public class Enemy : Character
         rb2d.velocity = Vector2.zero;
         animator.SetBool("dizzy", true);
         dizzy_time.Run();
+
 
     }
     public override void Sober()
