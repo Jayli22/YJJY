@@ -157,7 +157,8 @@ public class Enemy : Character
         rb2d.velocity = Vector2.zero;
         animator.SetBool("dizzy", true);
         dizzy_time.Run();
-
+        pushed_time.Stop();
+   
 
     }
     public override void Sober()
