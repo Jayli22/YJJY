@@ -28,7 +28,7 @@ public class ChangeScene : MonoBehaviour
     IEnumerator loadScene()
     {
         yield return new WaitForEndOfFrame();//加上这么一句就可以先显示加载画面然后再进行加载
-        async = SceneManager.LoadSceneAsync("4");
+        async = SceneManager.LoadSceneAsync(Utils.GetInt("Level").ToString());
 
         //读取完毕后返回， 系统会自动进入C场景
         yield return async;

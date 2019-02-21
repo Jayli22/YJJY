@@ -15,17 +15,18 @@ public class RockIronGiant : Character
     private bool shootbarrier;
     public GameObject rockHandPrefab;
     private Vector3 ShotPosition;
-    [SerializeField]
-    private StatBar hpBar;
+   // [SerializeField]
+    //private StatBar hpBar;
 
     // Start is called before the first frame update
-    protected override void Start()
+    protected override void Awake()
     {
+        base.Awake();
         shootingTime = gameObject.AddComponent<Timer>();
         shootingTime.Duration = 3f;
         ShotPosition= transform.position;
         ShotPosition.x = ShotPosition.x + 1.3f;
-        hpBar.Initialize(currenthp, maxhp);
+       // hpBar.Initialize(currenthp, maxhp);
         attackCoolDown = gameObject.AddComponent<Timer>();
         attackCoolDown.Duration = 3f;
         attackCoolDown.Run();
@@ -69,8 +70,8 @@ public class RockIronGiant : Character
             ChooseAttack();
             attackCoolDown.Run();
         }
-        hpBar.MyCurrentValue = currenthp;
-        hpBar.MyMaxValue = maxhp;
+       // hpBar.MyCurrentValue = currenthp;
+       // hpBar.MyMaxValue = maxhp;
     }
 
     public void ShootAction()

@@ -20,8 +20,11 @@ public class PortalIn : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            //ChangeLevel.NextLevel("4");
-            gameObject.AddComponent<ChangeScene>();
+            int i = Utils.GetInt("Level");
+            i++;
+            Utils.SetInt("Level", i);
+            ChangeLevel.NextLevel(i.ToString());
+            //gameObject.AddComponent<ChangeScene>();
         }
     }
 }

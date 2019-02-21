@@ -135,7 +135,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1803389743
   m_SortingLayer: 6
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 41fd25c4338dcb14c88ff985907ee9a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -159,13 +159,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93cdb8e7a1deb04db609ba87fce01d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhp: 10
-  currenthp: 10
+  maxhp: 200
+  currenthp: 200
   movespeed: 1
   ironhandprefab: {fileID: 4926603056662798442, guid: 06b2b9e52e3a06143961cd3bc1287130,
     type: 3}
   rush_effect: {fileID: 5177860658913009254, guid: 8339d531bc94f5745a03832cd50c2540,
     type: 3}
+  deathPanel: {fileID: 0}
+  hpBar: {fileID: 0}
 --- !u!50 &3227305708241944361
 Rigidbody2D:
   serializedVersion: 4

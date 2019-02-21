@@ -6,7 +6,21 @@ using UnityEngine.SceneManagement;
 public class GameManagement : MonoBehaviour
 {
     public GameObject portalPrefab;
-    private bool count;
+    private static GameManagement instance;
+    public bool count;
+
+    public static GameManagement MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameManagement>();
+            }
+            return instance;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

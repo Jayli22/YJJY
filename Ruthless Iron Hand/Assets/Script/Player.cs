@@ -20,8 +20,11 @@ public class Player : Character {
 	private int healthPoint;
 	private bool hitable = true;
 	private bool is_rush;
+    public GameObject deathPanel;
+     [SerializeField]
+    private StatBar hpBar;
 
-	public static Player MyInstance
+    public static Player MyInstance
 	{
 		get
 		{
@@ -59,13 +62,16 @@ public class Player : Character {
         cancel_attack_Timer.Run();
 		canPush = true;
 		healthPoint = 100;
-	}
-	
-	// Update is called once per frame
-	protected override void Update () {
-		
+        hpBar.Initialize(currenthp, maxhp);
+
     }
-	protected override void FixedUpdate()
+
+    // Update is called once per frame
+    protected override void Update () {
+        hpBar.MyCurrentValue = currenthp;
+        hpBar.MyMaxValue = maxhp;
+    }
+    protected override void FixedUpdate()
 	{
 		float horizontalInput = Input.GetAxis("Horizontal");
 		float verticalInput = Input.GetAxis("Vertical");
@@ -81,6 +87,11 @@ public class Player : Character {
         {
             rb2d.velocity = Vector2.zero;
             bepushed = false;
+        }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerDeath")
+          && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+        {
+            Destroy(gameObject);
         }
         if (bepushed || is_dizzy)
         {
@@ -391,11 +402,8 @@ public class Player : Character {
         //    rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
 
         //}
+        deathPanel.SetActive(true);
         rb2d.velocity = Vector2.zero;
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerDeath")
-            && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
-        {
-            Destroy(gameObject);
-        }
+      
     }
 }

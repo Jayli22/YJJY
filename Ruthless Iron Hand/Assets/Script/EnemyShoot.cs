@@ -27,7 +27,7 @@ public class EnemyShoot : MonoBehaviour
 
         if (!isTarget)
         {
-            target = Instantiate(targetPrefab, landPosition, transform.rotation);
+            //target = Instantiate(targetPrefab, landPosition, transform.rotation);
             isTarget = true;
             Debug.Log("target");
         }

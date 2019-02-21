@@ -8,5 +8,6 @@ public class ClickController : MonoBehaviour
     public void Click(string scene)
     {
         SceneManager.LoadScene(scene);
+        Utils.SetInt("Level", 1);
     }
 }

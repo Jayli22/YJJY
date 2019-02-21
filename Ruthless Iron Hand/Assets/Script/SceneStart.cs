@@ -10,22 +10,16 @@ public class SceneStart : MonoBehaviour
     {
         EnemyGenerator.MyInstance.SetTileMap();
         Vector2 dir = EnemyGenerator.MyInstance.ChoosePosition();
-        Instantiate(portal, dir, transform.rotation);
+        GameObject p = Instantiate(portal, dir, transform.rotation);
+        p.AddComponent<PortalOut>();
         Player.MyInstance.transform.position = dir;
-
+        GameManagement.MyInstance.count = false;
     }
 
     // Update is called once per frame
     void Update()
     {
        
-        //if (MainInterfaceGUIScript.async.isDone == false)
-        //{
-        //    //________没 有加载完要做的事情如Logo__________________________
-        //}
-        //else
-        //{
-        //    //全部加载完成后显示的东东。。
-        //}
+        
     }
 }

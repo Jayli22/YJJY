@@ -14,6 +14,7 @@ public class UIManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         maxhp_number = Player.MyInstance.maxhp;
         curhp_number = Player.MyInstance.currenthp;
         GameObject hpbar = GameObject.Find("HPbar");

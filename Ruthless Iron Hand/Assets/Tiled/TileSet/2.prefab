@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 7.7105446, y: 7.0255804, z: 6.9365697}
   m_Children: []
   m_Father: {fileID: 5232598965517932158}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7717667976687990061
 BoxCollider:
@@ -178,88 +178,6 @@ PolygonCollider2D:
       - {x: 18.8, y: 0}
       - {x: 18.8, y: 2.6399999}
       - {x: 19.199999, y: 2.6399999}
---- !u!1 &692055937068861148
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9053900516383515560}
-  - component: {fileID: 1327449460580286135}
-  m_Layer: 17
-  m_Name: Void
-  m_TagString: Void
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9053900516383515560
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 692055937068861148}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5232598965517932158}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1327449460580286135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 692055937068861148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dec3ca0fe88506448df84e8bf55b2dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowGrid: 1
-  InnerPadding: 0
-  ColliderDepth: 0.1
-  ColliderType: 1
-  Collider2DType: 1
-  ShowColliderNormals: 1
-  ColliderDisplayMode: 0
-  IsUndoEnabled: 1
-  SortOrder: 0
-  m_sortingLayer: 308297361
-  m_sortingLayerName: Default
-  m_orderInLayer: 0
-  m_material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_tintColor: {r: 1, g: 1, b: 1, a: 1}
-  m_pixelSnap: 0
-  m_isVisible: 1
-  m_allowPaintingOutOfBounds: 1
-  m_autoShrink: 1
-  m_enableUndoWhilePainting: 1
-  m_isTrigger: 0
-  m_physicMaterial: {fileID: 0}
-  m_physicMaterial2D: {fileID: 0}
-  m_cellSize: {x: 0.32, y: 0.32}
-  m_mapBounds:
-    m_Center: {x: 0, y: -0.31999993, z: 0}
-    m_Extent: {x: 4.16, y: 1.28, z: 0}
-  m_tileset: {fileID: 11400000, guid: f763ea4d37cb0ea45bba7b1852e43350, type: 2}
-  m_minGridX: -10
-  m_minGridY: -5
-  m_maxGridX: 12
-  m_maxGridY: 2
-  m_parentTilemapGroup: {fileID: 0}
-  m_parallaxFactor: {x: 1, y: 1}
-  m_chunkRendererProperties:
-    castShadows: 0
-    receiveShadows: 0
-    useLightProbes: 0
-    reflectionProbeUsage: 0
-    anchorOverride: {fileID: 0}
 --- !u!1 &810933055222703257
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +576,6 @@ Transform:
   m_Children:
   - {fileID: 750045281}
   - {fileID: 750045279}
-  - {fileID: 9053900516383515560}
   - {fileID: 2484837670432896524}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -678,8 +595,7 @@ MonoBehaviour:
   m_tilemaps:
   - {fileID: 750045280}
   - {fileID: 750045278}
-  - {fileID: 1327449460580286135}
-  m_selectedIndex: 1
+  m_selectedIndex: 2
   m_unselectedColorMultiplier: 1
   m_defaultTilemapWindowVisible: 0
   m_displayTilemapRList: 1
