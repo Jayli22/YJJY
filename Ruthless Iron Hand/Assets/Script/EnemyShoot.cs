@@ -7,7 +7,6 @@ public class EnemyShoot : MonoBehaviour
     private Vector2 landPosition;
     private Vector2 startPosition;
     private Timer changeTimer;
-    public GameObject targetPrefab;
     private float t;
     private bool isTarget = false;
     private GameObject target;
@@ -20,7 +19,6 @@ public class EnemyShoot : MonoBehaviour
         changeTimer.Run();
         startPosition = transform.position;
         t = 0;
-        targetPrefab = Resources.Load("Target") as GameObject;
     }
 
     // Update is called once per frame
@@ -43,7 +41,9 @@ public class EnemyShoot : MonoBehaviour
         if(t >= 1)
         {
             Destroy(GetComponent<EnemyShoot>());
-            Destroy(target);
+
+          //  Destroy(target);
+
         }
     }
     //set target position and the landspeed(0.01-0.1) to get the position

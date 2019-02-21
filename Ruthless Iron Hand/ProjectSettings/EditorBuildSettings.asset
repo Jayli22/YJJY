@@ -18,25 +18,25 @@ EditorBuildSettings:
     path: Assets/Scenes/3.unity
     guid: 119d938e1adb5334e82d6f2579adfc5a
   - enabled: 1
-    path: Assets/Scenes/4.unity
+    path: Assets/Scenes/boss.unity
     guid: 9e91ba73ae707cb4a8bb8f53409225ad
   - enabled: 1
-    path: Assets/Scenes/5.unity
+    path: Assets/Scenes/4.unity
     guid: ec998d7b6cf762546be0642d7eea83be
   - enabled: 1
-    path: Assets/Scenes/6.unity
+    path: Assets/Scenes/5.unity
     guid: 87dd4e20232012e488576067cdc462e3
   - enabled: 1
-    path: Assets/Scenes/7.unity
+    path: Assets/Scenes/6.unity
     guid: e5e3cc2f36673e84abb2bd658970f9fe
   - enabled: 1
-    path: Assets/Scenes/8.unity
+    path: Assets/Scenes/7.unity
     guid: fd3df09e7b6f1cd499a55f6ce6d7cdc2
   - enabled: 1
-    path: Assets/Scenes/9.unity
+    path: Assets/Scenes/8.unity
     guid: 519ec88618623484f91ef87b616aeb77
   - enabled: 1
-    path: Assets/Scenes/10.unity
+    path: Assets/Scenes/9.unity
     guid: 983cf7f5e4bf186448c986cfaaf09f41
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
