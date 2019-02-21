@@ -15,8 +15,8 @@ MonoBehaviour:
   Tileset: {fileID: 11400000, guid: f763ea4d37cb0ea45bba7b1852e43350, type: 2}
   Params:
     m_paramList: []
-  m_group: 0
-  m_autotilingMode: 5
+  m_group: 1
+  m_autotilingMode: -1
   m_showInPalette: 1
-  TileIds: ffffffffffffffffffffffff30000000ffffffffffffffff0000000010000000ffffffff32000000ffffffff21000000020000001200000001000000ffffffff
-  InteriorCornerTileIds: ffffffffffffffffffffffffffffffff
+  TileIds: 75000000750000007500000030000000750000007500000000000000100000007500000032000000750000002100000002000000120000000100000075000000
+  InteriorCornerTileIds: 95000000980000007500000076000000
