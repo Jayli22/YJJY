@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5277878322305075627}
   - component: {fileID: 888688594}
   - component: {fileID: 888688597}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RockIronGiant
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1803389743
-  m_SortingLayer: 5
+  m_SortingLayerID: -1898600653
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c11fe920118ebe345b53ccfcbdec8eb3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -157,8 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f736bcce2648897439cd764f9205e98e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhp: 500
-  currenthp: 500
+  maxhp: 1000
+  currenthp: 1000
   movespeed: 0
   bulletPrefabList:
   - {fileID: 7606331430514291748, guid: 57226d72b70e55e46b4206341085bf01, type: 3}
@@ -170,10 +170,13 @@ MonoBehaviour:
   - {fileID: 9055090638414194893, guid: dfcde72685a27ee469cab0fc4977a06a, type: 3}
   - {fileID: 4537303082440340654, guid: 33cc678f15383804781488f35c32355f, type: 3}
   - {fileID: 6545863078535975903, guid: 43576c66d41401c47b363dc2eda87737, type: 3}
+  barrierPrefabList:
   - {fileID: 4575045825903810897, guid: 522c9eba759d3b0419b54f30eb05d603, type: 3}
   - {fileID: 6464993804185554540, guid: 2ac6b36012132664088a1e14f35fc740, type: 3}
+  - {fileID: 6705005590669532648, guid: ef8a8d5b54e94b94fafa09cae30f036a, type: 3}
   rockHandPrefab: {fileID: 4940216697474411035, guid: b14430fcd9e632a4bbd76e8e4cbb1c9d,
     type: 3}
+  hpBar: {fileID: 0}
 --- !u!1001 &1500125445
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ TagManager:
   - CameraBound
   - Void
   - Portal
+  - Boss
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -30,8 +32,8 @@ TagManager:
   - BarriedObject
   - Effect
   - Void
-  - 
-  - 
+  - BossBarrier
+  - Boss
   - 
   - 
   - 
@@ -66,9 +68,9 @@ TagManager:
   - name: character
     uniqueID: 2491577553
     locked: 0
-  - name: UI
-    uniqueID: 4070891793
-    locked: 0
   - name: Effect
     uniqueID: 2080371663
+    locked: 0
+  - name: UI
+    uniqueID: 4070891793
     locked: 0

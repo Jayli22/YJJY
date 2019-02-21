@@ -11,6 +11,7 @@ public class EnemyShoot : MonoBehaviour
     private float t;
     private bool isTarget = false;
     private GameObject target;
+    private float landSpeed = 0.01f;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,13 +31,13 @@ public class EnemyShoot : MonoBehaviour
         {
             target = Instantiate(targetPrefab, landPosition, transform.rotation);
             isTarget = true;
-
+            Debug.Log("target");
         }
         if (changeTimer.Finished)
         {
             changeTimer.Run();
             transform.position =  Vector2.Lerp(startPosition, landPosition, t);
-            t += 0.01f;
+            t += landSpeed;
             //Debug.Log(t);
         }
         if(t >= 1)
@@ -44,6 +45,12 @@ public class EnemyShoot : MonoBehaviour
             Destroy(GetComponent<EnemyShoot>());
             Destroy(target);
         }
+    }
+    //set target position and the landspeed(0.01-0.1) to get the position
+    public void SetLandPosition(Vector2 l,float timespeed)
+    {
+        landPosition = l;
+        landSpeed = timespeed;
     }
 
     public void SetLandPosition(Vector2 l)

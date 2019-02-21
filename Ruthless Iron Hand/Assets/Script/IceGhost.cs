@@ -21,6 +21,8 @@ public class IceGhost : Enemy
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
             thisAI.moveable = true;
+            is_float = false;
+            rb2d.velocity = Vector2.zero;
             animator.SetBool("move", true);
             animator.SetBool("hit", false);
 
@@ -50,7 +52,6 @@ public class IceGhost : Enemy
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
             {
                 Destroy(gameObject);
-                //Debug.Log("destory");
             }
         }
 
@@ -75,12 +76,11 @@ public class IceGhost : Enemy
             Vector2 dir;
             dir = obj.transform.position - transform.position;
 
-            if (obj.GetComponent<Rigidbody2D>())
-            {
+           
                 if (obj.GetComponent<Player>())
                 {
                     obj.GetComponent<Player>().Stun(1.5f);
-                    obj.GetComponent<Player>().TakeDamage(20);
+                    obj.GetComponent<Player>().TakeDamage(50);
                     obj.GetComponent<Animator>().SetBool("dizzy", true);
 
                 }
@@ -90,12 +90,17 @@ public class IceGhost : Enemy
                 }
                 else if(obj.GetComponent<Enemy>())
                 {
+                    obj.GetComponent<Enemy>().TakeDamage(50);
                     obj.GetComponent<Enemy>().Stun(1f);
-                    obj.GetComponent<Enemy>().TakeDamage(20);
                     obj.GetComponent<Animator>().SetBool("dizzy", true);
                 }
-                //obj.enabled = false;
+                else if(obj.GetComponent<RockIronGiant>())
+            {
+                obj.GetComponent<RockIronGiant>().TakeDamage(50);
+
             }
+            //obj.enabled = false;
+
         }
         Destroy(gameObject);
     }
@@ -118,19 +123,15 @@ public class IceGhost : Enemy
 
         if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && is_alive)
         {
-            Player.MyInstance.TakeDamage(1);
+            Player.MyInstance.TakeDamage(10);
             // DeathExplosion();
 
 
         }
-        else if (collision.transform.tag == "Map" && is_float)
+        else if ((collision.transform.tag == "Map" || collision.transform.tag == "Void" || collision.transform.tag == "Barrier" || collision.transform.tag == "Boss") && is_float)
         {
-            thisAI.moveable = false;
-            animator.SetBool("dizzy", true);
-            is_dizzy = true;
-            //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
-            //AI.move
-            rb2d.velocity = Vector2.zero;
+            Stun();
+           
             //m_dizzy_time.Run();
             DeathExplosion();
             //Destroy(gameObject);

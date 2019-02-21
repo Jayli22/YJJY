@@ -111,52 +111,40 @@ public class Player : Character {
 		    }
         }
     }
-	public void Freeze()
-	{
-		rb2d.velocity = new Vector2(0, 0);
-	}
-
-	public void getHurt(int damagePoint)
-	{
-		healthPoint -= damagePoint;
-		print(healthPoint);
-		if(healthPoint<=0)
-		{
-			Destroy(gameObject);
-		}
-	}
+	
+	
 	private void GetInput()
 	{
 		movedirection = Vector2.zero;
-		animator.SetInteger("DirectionX", 0);
-		animator.SetInteger("DirectionY", 0);
+		animator.SetInteger("directionX", 0);
+		animator.SetInteger("directionY", 0);
 
 		Vector2 currentVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
 		
 		if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
 		{
 			movedirection += Vector2.up;
-			animator.SetInteger("DirectionY", 1);
+			animator.SetInteger("directionY", 1);
 			ismove = true;
 		}
 		if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
 		{
 			movedirection += Vector2.down;
-			animator.SetInteger("DirectionY", -1);
+			animator.SetInteger("directionY", -1);
 			ismove = true;
 
 		}
 		if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
 		{
 			movedirection += Vector2.left;
-			animator.SetInteger("DirectionX", -1);
+			animator.SetInteger("directionX", -1);
 			ismove = true;
 
 		}
 		if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
 		{
 			movedirection += Vector2.right;
-			animator.SetInteger("DirectionX", 1);
+			animator.SetInteger("directionX", 1);
 			ismove = true;
 		}
 
@@ -164,7 +152,7 @@ public class Player : Character {
 		{
             
 
-			animator.SetTrigger("Attack");
+			animator.SetTrigger("attack");
 			cancel_attack_Timer.Run();
             Utils.SetBool("ironhand_attack", true);
             Vector2 direction_position = transform.position;
@@ -177,25 +165,25 @@ public class Player : Character {
 			if (pushAngle * Mathf.Rad2Deg >= -45 && pushAngle * Mathf.Rad2Deg <= 45)
 			{
 				direction_position.x = direction_position.x + 0.1f;
-				animator.SetInteger("AttackDirection", 0);
+				animator.SetInteger("attackDirection", 0);
 
 			}
 			else if (pushAngle * Mathf.Rad2Deg >= 45 && pushAngle * Mathf.Rad2Deg <= 135)
 			{
 				direction_position.y = direction_position.y + 0.1f;
-				animator.SetInteger("AttackDirection", 1);
+				animator.SetInteger("attackDirection", 1);
 
 			}
 			else if (pushAngle * Mathf.Rad2Deg <= -135 || pushAngle * Mathf.Rad2Deg >= 135)
 			{
 				direction_position.x = direction_position.x - 0.1f;
-				animator.SetInteger("AttackDirection", 2);
+				animator.SetInteger("attackDirection", 2);
 
 			}
 			else if (pushAngle * Mathf.Rad2Deg <= -45 && pushAngle * Mathf.Rad2Deg >= -135)
 			{
 				direction_position.y = direction_position.y - 0.1f;
-				animator.SetInteger("AttackDirection", 3);
+				animator.SetInteger("attackDirection", 3);
 
 			}
 			GameObject ironhandobject = Instantiate(ironhandprefab, direction_position, Quaternion.identity);
@@ -245,22 +233,31 @@ public class Player : Character {
 	public override void TakeDamage(int damage)
 	{
 		
-			currenthp -= 1;
-		
-		if (currenthp <= 0)
-		{
-			//Invoke("ChangeNextScene", 2);
+        if(hitable)
+        {
+            currenthp -= damage;
 
-			is_alive = false;
-		}
-		StartCoroutine(ChangeHitable());
+        }
+
+        if (currenthp <= 0)
+        {
+            //Invoke("ChangeNextScene", 2);
+
+            Death();
+        }
+        else
+        {
+            StartCoroutine(ChangeHitable());
+        }
 	}
 	public IEnumerator ChangeHitable()
 	{
 		Hitable = false;
 		Player.MyInstance.gameObject.layer = 10;
-		//  GetComponent<BoxCollider2D>().enabled = 
-		GetComponent<SpriteRenderer>().enabled = false;
+        Transform child = transform.GetChild(0);
+        child.gameObject.layer = 10;
+        //  GetComponent<BoxCollider2D>().enabled = 
+        GetComponent<SpriteRenderer>().enabled = false;
 		yield return new WaitForSeconds(0.2f);
 		GetComponent<SpriteRenderer>().enabled = true;
 		yield return new WaitForSeconds(0.2f);
@@ -273,7 +270,9 @@ public class Player : Character {
 		GetComponent<SpriteRenderer>().enabled = true;
 		yield return new WaitForSeconds(0.2f);
 		Hitable = true;
-		Player.MyInstance.gameObject.layer = 11;
+        child.gameObject.layer = 12;
+
+        Player.MyInstance.gameObject.layer = 11;
 	}
 
 	public IEnumerator Rush()
@@ -316,7 +315,7 @@ public class Player : Character {
 		}
 
 
-        animator.SetTrigger("Rush");
+        animator.SetTrigger("rush");
         rb2d.velocity = movedirection * movespeed * 5;
         Debug.Log(rb2d.velocity);
 
@@ -334,5 +333,69 @@ public class Player : Character {
 
 	}
 
-   
+    public override void BePushed(Vector2 dir)
+    {
+
+        bepushed = true;
+        dir = dir.normalized;
+
+        Debug.Log("push");
+        pushed_time.Run();
+        rb2d.velocity = 3 * dir * movespeed;
+
+    }
+    public override void BePushed(Vector2 dir, float floattime)
+    {
+        //is_move = true;
+
+        //m_pushdirection = transform.position - Player.MyInstance.transform.position;
+        //m_pushdirection = m_pushdirection.normalized;
+        bepushed = true;
+        ////rb2d.constraints = RigidbodyConstraints2D.None;
+        //pushdirection.x = Mathf.Cos(pushDegree);
+        //pushdirection.y = Mathf.Sin(pushDegree);
+        //float pushAngle = Mathf.Atan2(pushdirection.y, pushdirection.x);
+        //m_animator.SetBool("hit", true);
+        pushed_time.Duration = floattime;
+        pushed_time.Run();
+        //m_rb2d.AddForce(3 * dir, ForceMode2D.Impulse);
+        rb2d.velocity = 3 * dir * movespeed;
+
+    }
+
+    protected  void OnCollisionEnter2D(Collision2D collision)
+    {        
+        if ((collision.transform.tag == "Map" || collision.transform.tag == "Barrier"|| collision.transform.tag == "Void")  && bepushed)
+        {
+            animator.SetBool("dizzy", true);
+            is_dizzy = true;
+            dizzy_time.Run();
+            //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+            //AI.move
+            rb2d.velocity = Vector2.zero;
+
+        }
+
+    }
+
+    protected void Death()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        Transform child = transform.GetChild(0);
+        Destroy(child.gameObject);
+        is_alive = false;
+        animator.SetTrigger("death");
+        //if (!animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerDeath"))
+        //{
+        //    animator.SetTrigger("death");
+        //    rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        //}
+        rb2d.velocity = Vector2.zero;
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerDeath")
+            && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

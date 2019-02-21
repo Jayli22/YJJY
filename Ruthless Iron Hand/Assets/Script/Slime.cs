@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Slime : Enemy
 {
-    //// Start is called before the first frame update
-    //protected override  void Start()
-    //{
-        
-    //}
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && is_alive)
+        {
+            Player.MyInstance.TakeDamage(10);
 
-    //// Update is called once per frame
-    //protected override void Update()
-    //{
-        
-    //}
+
+        }
+        else if ((collision.transform.tag == "Map" || collision.transform.tag == "Void" || collision.transform.tag == "Barrier") && is_float)
+        {
+            Stun();
+        }
+
+        if (collision.gameObject.GetComponent<RockIronGiant>())
+        {
+            this.TakeDamage(100);
+        }
+    }
 }

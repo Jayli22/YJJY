@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b858fdda4524b9c49badb2d84fb562d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
+  damage: 30
   crush:
   - {fileID: 8300000, guid: 9524893950bff284aab71ca81163b5de, type: 3}
   - {fileID: 8300000, guid: 03680c600a521a144b84d1c402b356a1, type: 3}

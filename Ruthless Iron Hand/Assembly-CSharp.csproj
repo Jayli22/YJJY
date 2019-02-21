@@ -98,6 +98,7 @@
     <Compile Include="Assets\CreativeSpore\SuperTilemapEditor\Scripts\Utils\TilemapUtils.cs" />
     <Compile Include="Assets\CreativeSpore\SuperTilemapEditor\Scripts\Utils\TilemapVertexPaintUtils.cs" />
     <Compile Include="Assets\Script\AudioManagement.cs" />
+    <Compile Include="Assets\Script\BoundControl.cs" />
     <Compile Include="Assets\Script\Bullet.cs" />
     <Compile Include="Assets\Script\CamearBound.cs" />
     <Compile Include="Assets\Script\CameraControl.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Assets\Script\RockIronGiant.cs" />
     <Compile Include="Assets\Script\SceneStart.cs" />
     <Compile Include="Assets\Script\Slime.cs" />
+    <Compile Include="Assets\Script\StatBar.cs" />
     <Compile Include="Assets\Script\SummonEffect.cs" />
     <Compile Include="Assets\Script\Timer.cs" />
     <Compile Include="Assets\Script\UIManagement.cs" />

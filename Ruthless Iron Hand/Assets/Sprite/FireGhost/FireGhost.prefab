@@ -116,8 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f561b73875486cb4f8957928969d5932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhp: 10
-  currenthp: 10
+  maxhp: 50
+  currenthp: 50
   movespeed: 1
   m_explosion_effect: {fileID: 2634561730566958018, guid: 30716231d7959914398bed542519f7b3,
     type: 3}

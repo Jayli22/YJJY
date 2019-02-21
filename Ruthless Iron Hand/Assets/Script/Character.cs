@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
 
     protected Timer pushed_time;
     protected Timer dizzy_time;
+    protected bool is_float = false;
 
     protected Vector2 pushdirection;
     protected Rigidbody2D rb2d;
@@ -61,20 +62,12 @@ public class Character : MonoBehaviour
 
     public virtual void BePushed(Vector2 dir)
     {
-        //is_move = true;
-        
-        //m_pushdirection = transform.position - Player.MyInstance.transform.position;
-        //m_pushdirection = m_pushdirection.normalized;
+      
         bepushed = true;
         dir = dir.normalized;
-        ////rb2d.constraints = RigidbodyConstraints2D.None;
-        //pushdirection.x = Mathf.Cos(pushDegree);
-        //pushdirection.y = Mathf.Sin(pushDegree);
-        //float pushAngle = Mathf.Atan2(pushdirection.y, pushdirection.x);
-        //m_animator.SetBool("hit", true);
+
         Debug.Log("push");
         pushed_time.Run();
-        // m_rb2d.AddForce(3 * dir, ForceMode2D.Impulse);]
         rb2d.velocity = 3 * dir * movespeed;
 
     }
@@ -118,4 +111,6 @@ public class Character : MonoBehaviour
         is_dizzy = false;
         animator.SetBool("dizzy", false);
     }
+
+    
 }

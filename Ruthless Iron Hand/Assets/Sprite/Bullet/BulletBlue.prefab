@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5302632130222732342}
   m_Layer: 13
   m_Name: BulletBlue
-  m_TagString: Enemy
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1803389743
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bb13b26458a3151478ebc288e16a05ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -131,5 +131,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba3c653cf99d7448808f9170dcf7618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePoint: 0
+  damagePoint: 10
   move_speed: 0

@@ -7,7 +7,6 @@ public class Enemy : Character
     
     protected EnemyAI thisAI;
     protected AudioSource audioSource;
-    protected bool is_float = false;
 
     //protected bool is_move;
     // Start is called before the first frame update
@@ -34,6 +33,7 @@ public class Enemy : Character
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
             thisAI.moveable = true;
+            rb2d.velocity = Vector2.zero;
             animator.SetBool("move", true);
             animator.SetBool("hit", false);
             is_float = false;
@@ -109,11 +109,11 @@ public class Enemy : Character
     {
         if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && is_alive)
         {
-            Player.MyInstance.TakeDamage(1);
+            Player.MyInstance.TakeDamage(10);
             
 
         }
-        else if (collision.transform.tag == "Map" && is_float)
+        else if ((collision.transform.tag == "Map" || collision.transform.tag == "Void" || collision.transform.tag == "Barrier") && is_float)
         {
             Stun();
         }

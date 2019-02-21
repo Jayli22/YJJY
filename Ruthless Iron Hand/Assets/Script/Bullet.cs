@@ -26,9 +26,17 @@ public class Bullet : MonoBehaviour {
 	{
 		if(coll.gameObject.CompareTag("Player")&&!friendly)
 		{
-            Player.MyInstance.TakeDamage(1);
+            Player.MyInstance.TakeDamage(damagePoint);
 		}
-		if(!coll.gameObject.CompareTag("Enemy") && !coll.gameObject.CompareTag("Void") && !coll.gameObject.CompareTag("CameraBound"))
+		if(coll.gameObject.CompareTag("Enemy") ||
+            coll.gameObject.CompareTag("Void") || 
+            coll.gameObject.CompareTag("CameraBound") || 
+            coll.gameObject.CompareTag("PlayerAttack")
+            || coll.gameObject.CompareTag("Bullet"))
+        {
+
+        }
+            else
 		{
             Destroy(gameObject);
 

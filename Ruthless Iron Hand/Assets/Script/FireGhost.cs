@@ -25,6 +25,7 @@ public class FireGhost : Enemy
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
             rb2d.velocity = Vector2.zero;
+            is_float = false;
             thisAI.moveable = true;
             animator.SetBool("move", true);
             animator.SetBool("hit", false);
@@ -46,13 +47,16 @@ public class FireGhost : Enemy
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath"))
             {
                 animator.SetTrigger("death");
+                //Debug.Log("destory");
+
                 rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
 
             }
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("SlimeDeath") && 
+                animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
             {
-                Destroy(gameObject);
-                //Debug.Log("destory");
+               Destroy(gameObject);
+                Debug.Log("destory");
             }
         }
        
@@ -72,19 +76,20 @@ public class FireGhost : Enemy
             Vector2 dir;
             dir = obj.transform.position - transform.position;
 
-            if (obj.GetComponent<Rigidbody2D>())
-            {
+            
                 if (obj.GetComponent<Character>())
                 {
                     obj.GetComponent<Character>().BePushed(dir);
-                    obj.GetComponent<Character>().TakeDamage(5);
+                    obj.GetComponent<Character>().TakeDamage(60);
                 }
                 else if (obj.GetComponent<DestructibleObject>())
                     {
                         obj.GetComponent<DestructibleObject>().bePushed(dir);
                     } 
+
+
                     //obj.enabled = false;
-            }
+            
         }
         Destroy(gameObject);
     }
@@ -107,12 +112,12 @@ public class FireGhost : Enemy
     
         if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && is_alive)
         {
-            Player.MyInstance.TakeDamage(1);
+            Player.MyInstance.TakeDamage(20);
            // DeathExplosion();
 
 
         }
-        else if (collision.transform.tag == "Map" && is_float)
+        else if ((collision.transform.tag == "Map" || collision.transform.tag == "Void" ||collision.transform.tag == "Barrier" || collision.transform.tag == "Boss") && is_float)
         {
             Stun();
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;

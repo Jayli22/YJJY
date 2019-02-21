@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1803389743
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 794f76edfff76d347968bbef27e15938, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -94,6 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a1db81a311aba4dba5c9bae7bbf1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_endTimer: {fileID: 0}
+  m_attack_deltatime: {fileID: 0}
 --- !u!50 &270496695520488685
 Rigidbody2D:
   serializedVersion: 4
@@ -122,7 +124,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4926603056662798442}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -140,7 +142,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.47482467, y: 0.020554576}
+    - - {x: 0.3427081, y: -0.02739527}
+      - {x: 0.47482467, y: 0.020554576}
       - {x: 0.5, y: -0.17999999}
       - {x: 0.544055, y: -0.06857993}
       - {x: 0.5616598, y: 0.112253666}
@@ -155,8 +158,8 @@ PolygonCollider2D:
       - {x: -0.46847105, y: -0.22975202}
       - {x: -0.44103307, y: -0.2748761}
       - {x: -0.2412436, y: -0.034639757}
-      - {x: 0.06162399, y: 0.067612305}
-      - {x: 0.23475957, y: 0.068495825}
+      - {x: 0.06984383, y: -0.042533252}
+      - {x: 0.25119925, y: -0.030142006}
     - - {x: 0.53, y: -0.22999999}
       - {x: 0.5, y: -0.19}
       - {x: 0.48, y: -0.21}

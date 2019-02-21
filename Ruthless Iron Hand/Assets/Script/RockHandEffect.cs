@@ -7,7 +7,7 @@ public class RockHandEffect : EffectScript
     protected override void Update()
     {
         base.Update();
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
         {
             Collider2D collider2D = GetComponent<CircleCollider2D>();
             collider2D.enabled = true;

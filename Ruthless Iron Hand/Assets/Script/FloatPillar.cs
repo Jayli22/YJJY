@@ -7,7 +7,7 @@ public class FloatPillar : MonoBehaviour
     private Rigidbody2D rb2d;
     private Vector2 pushDirection;
     public Timer pushed_time;   // 被击飞时间
-    public int Damage;
+    public int damage;
     private bool floating;  // is pushed or not
     private Animator animator;
     protected AudioSource audioSource; // music source
@@ -68,25 +68,32 @@ public class FloatPillar : MonoBehaviour
     protected virtual void DeathExplosion()   //破坏时爆炸方法
     {
         // Utils.SetBool("freeze_explosion", true);
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);  //获取被破坏时范围内的所有物体，第一个参数为本身位置，第二个参数为判断半径
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 1f);  //获取被破坏时范围内的所有物体，第一个参数为本身位置，第二个参数为判断半径
         foreach (Collider2D obj in hitColliders)
         {
             Vector2 dir;
             dir = obj.transform.position - transform.position;
+           
+           
 
-            if (obj.GetComponent<Rigidbody2D>())
+
+            if (obj.tag == "Player")
             {
-                if (obj.GetComponent<Character>())
-                {
-                    obj.GetComponent<Character>().BePushed(dir, 0.1f);
-                    obj.GetComponent<Character>().TakeDamage(10);
-                }
-                else if (obj.GetComponent<DestructibleObject>())
-                {
-                    obj.GetComponent<DestructibleObject>().bePushed(dir, 0.1f);
-                }
-                //obj.enabled = false;
+                Player.MyInstance.BePushed(dir, 0.5f);
+                Player.MyInstance.TakeDamage(damage);
+
             }
+            else if (obj.GetComponent<Character>())
+            {
+                obj.GetComponent<Character>().TakeDamage(damage);
+                obj.GetComponent<Character>().BePushed(dir, 0.1f);
+            }
+            else if (obj.GetComponent<DestructibleObject>())
+            {
+                obj.GetComponent<DestructibleObject>().bePushed(dir);
+            }
+            //obj.enabled = false;
+
         }
         //Destroy(gameObject);
     }

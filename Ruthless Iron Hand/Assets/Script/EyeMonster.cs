@@ -52,10 +52,11 @@ public class EyeMonster : Enemy
         {
             // rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
             //rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+             rb2d.velocity = Vector2.zero;
+            is_float = false;
             thisAI.moveable = true;
-            //m_animator.SetBool("move", true);
-            
-            animator.SetBool("hit", false);  
+            animator.SetBool("move", true);
+            animator.SetBool("hit", false);
 
         }
         if (dizzy_time.Finished)
@@ -98,5 +99,24 @@ public class EyeMonster : Enemy
         is_shotting = false;
         animator.SetBool("attack", false);
 
+    }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Player" && Player.MyInstance.Hitable && is_alive)
+        {
+            Player.MyInstance.TakeDamage(10);
+
+
+        }
+        else if ((collision.transform.tag == "Map" || collision.transform.tag == "Void" || collision.transform.tag == "Barrier") && is_float)
+        {
+            Stun();
+        }
+
+        if (collision.gameObject.GetComponent<RockIronGiant>())
+        {
+            TakeDamage(100);
+        }
     }
 }

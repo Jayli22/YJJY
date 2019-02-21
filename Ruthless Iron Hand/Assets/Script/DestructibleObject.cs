@@ -6,7 +6,7 @@ public class DestructibleObject : MonoBehaviour {
     protected Rigidbody2D rb2d;
     protected Vector2 pushDirection;
    // public Timer pushed_time;   // 被击飞时间
-    public int Damage;
+    public int damage;
     private bool floating;  // is pushed or not
     protected Animator animator;
     protected AudioSource audioSource; // music source
@@ -15,7 +15,7 @@ public class DestructibleObject : MonoBehaviour {
  
 
     // Use this for initialization
-   public virtual void Start () {
+   public virtual void Awake () {
         audioSource = gameObject.AddComponent<AudioSource>();
       //  pushed_time = gameObject.AddComponent<Timer>();
       //  pushed_time.Duration = 1f; 
@@ -45,25 +45,42 @@ public class DestructibleObject : MonoBehaviour {
     {
         floating = true;
         animator.SetBool("Float", true); 
-        rb2d.constraints = RigidbodyConstraints2D.FreezeRotation; 
+        rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+        gameObject.layer = 15;
 
-      //  pushed_time.Run();
+        //  pushed_time.Run();
         rb2d.velocity = dir * 8f;
 
     }
-    public virtual void bePushed(Vector2 dir,float pushedtime)  //被击飞方法
+    
+    public virtual void bePushed(Vector2 dir,float pushpower)  //被击飞方法
     {
+        gameObject.layer = 15;
+
         floating = true;
         animator.SetBool("Float", true);
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
      //   pushed_time.Duration = pushedtime;
      //   pushed_time.Run();
-        rb2d.velocity = dir * 8f;
+        rb2d.velocity = dir * pushpower;
+
+    }
+
+    public virtual void BossPush(Vector2 dir,float pushpower)
+    {
+        gameObject.layer = 18;
+
+        floating = true;
+        animator.SetBool("Float", true);
+        rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //   pushed_time.Duration = pushedtime;
+        //   pushed_time.Run();
+        rb2d.velocity = dir * pushpower;
 
     }
     protected virtual void OnCollisionEnter2D(Collision2D coll)
     {
-        if (floating)
+        if (floating && coll.gameObject.tag != "PlayerAttack")
         {
             animator.SetBool("Destroyed",true);
             rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -78,25 +95,28 @@ public class DestructibleObject : MonoBehaviour {
     protected virtual void DeathExplosion()   //破坏时爆炸方法
     {
         // Utils.SetBool("freeze_explosion", true);
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);  //获取被破坏时范围内的所有物体，第一个参数为本身位置，第二个参数为判断半径
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 0.2f);  //获取被破坏时范围内的所有物体，第一个参数为本身位置，第二个参数为判断半径
         foreach (Collider2D obj in hitColliders)
         {
             Vector2 dir;
             dir = obj.transform.position - transform.position;
-
-            if (obj.GetComponent<Rigidbody2D>())
+            if (obj.tag == "Player")
             {
-                if (obj.GetComponent<Character>())
+                Player.MyInstance.BePushed(dir, 0.5f);
+                Player.MyInstance.TakeDamage(damage);
+
+            }
+            else if (obj.GetComponent<Character>())
                 {
-                    obj.GetComponent<Character>().BePushed(dir,0.1f);
-                    obj.GetComponent<Character>().TakeDamage(10);
+                obj.GetComponent<Character>().TakeDamage(damage);
+                obj.GetComponent<Character>().BePushed(dir,0.1f);
                 }
                 else if (obj.GetComponent<DestructibleObject>())
                 {
-                    obj.GetComponent<DestructibleObject>().bePushed(dir,0.1f);
+                    obj.GetComponent<DestructibleObject>().bePushed(dir);
                 }
                 //obj.enabled = false;
-            }
+            
         }
         //Destroy(gameObject);
     }

@@ -57,7 +57,7 @@ public class Ironhand : MonoBehaviour {
             Rigidbody2D target_rb2d = coll.gameObject.GetComponent<Rigidbody2D>();
             // coll.gameObject.GetComponent<DestructibleObject>().m_pushed_time.Run();
             Vector2 dir = coll.transform.position - transform.position;
-            coll.gameObject.GetComponent<DestructibleObject>().bePushed(dir);
+            coll.gameObject.GetComponent<DestructibleObject>().bePushed(m_pushdirection);
             //PushAway(pushDegree, target_rb2d);
         }
         else if (coll.gameObject.CompareTag("Enemy"))
@@ -66,7 +66,7 @@ public class Ironhand : MonoBehaviour {
             Rigidbody2D target_rb2d = coll.gameObject.GetComponent<Rigidbody2D>();
             Vector2 dir = coll.transform.position - transform.position;
 
-            coll.gameObject.GetComponent<Enemy>().BePushed(dir);
+            coll.gameObject.GetComponent<Enemy>().BePushed(m_pushdirection, 5f);
             coll.GetComponent<Enemy>().TakeDamage(10);
             
             //PushAway(pushDegree, target_rb2d);

@@ -18,7 +18,7 @@ public class GameManagement : MonoBehaviour
     {
         //if(SceneManager.sceneLoaded)
 
-        if(GameObject.FindGameObjectWithTag("Enemy") == null && count == false)
+        if(GameObject.FindGameObjectWithTag("Enemy") == null && count == false && GameObject.FindGameObjectWithTag("Boss") == null)
         {
             //Debug.Log("no more enemy");
             count = true;
