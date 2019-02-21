@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class RockHandEffect : EffectScript
 {
+    public AudioClip[] impactAudio;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        AudioSource.clip = impactAudio[0];
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -11,6 +19,11 @@ public class RockHandEffect : EffectScript
         {
             Collider2D collider2D = GetComponent<CircleCollider2D>();
             collider2D.enabled = true;
+            if(!AudioSource.isPlaying)
+            {
+                AudioSource.Play();
+            }
+
         }
     }
 

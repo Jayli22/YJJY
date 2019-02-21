@@ -80,7 +80,7 @@ public class IceGhost : Enemy
                 if (obj.GetComponent<Player>())
                 {
                     obj.GetComponent<Player>().Stun(1.5f);
-                    obj.GetComponent<Player>().TakeDamage(50);
+                    //obj.GetComponent<Player>().TakeDamage(50);
                     obj.GetComponent<Animator>().SetBool("dizzy", true);
 
                 }
@@ -134,9 +134,19 @@ public class IceGhost : Enemy
            
             //m_dizzy_time.Run();
             DeathExplosion();
+            TakeDamage(10);
             //Destroy(gameObject);
             // Debug.Log("Wall");
             // TakeDamage(10);
+        }
+        else if (collision.transform.tag == "Enemy")
+        {
+            if (is_float)
+            {
+                //  collision.transform.GetComponent<Enemy>().BePushed(rb2d.velocity);
+                DeathExplosion();
+
+            }
         }
 
     }

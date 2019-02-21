@@ -31,16 +31,16 @@ public class UIManagement : MonoBehaviour
     }
 
     // Update is called once per frame
-    //void Update()
-    //{
-    //    curhp_number = Player.MyInstance.currenthp;
+    void Update()
+    {
+        //curhp_number = Player.MyInstance.currenthp;
 
-    //    for (int j = curhp_number; j < maxhp_number; j++)
-    //    {
-    //        //maxhp_array[j] = Instantiate(empty_hpheart);
-    //        // maxhp_array[j].transform.SetParent(hpbar.transform, false);
-    //        //maxhp_array[j].GetComponent<Image>().overrideSprite = empty_hpheart.sprite;
+        //for (int j = curhp_number; j < maxhp_number; j++)
+        //{
+        //    //maxhp_array[j] = Instantiate(empty_hpheart);
+        //    // maxhp_array[j].transform.SetParent(hpbar.transform, false);
+        //   // maxhp_array[j].GetComponent<Image>().overrideSprite = empty_hpheart.sprite;
             
-    //    }
-    //}
+        //}
+    }
 }

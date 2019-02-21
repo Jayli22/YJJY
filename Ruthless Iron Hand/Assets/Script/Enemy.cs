@@ -124,6 +124,14 @@ public class Enemy : Character
         else if ((collision.transform.tag == "Map" || collision.transform.tag == "Void" || collision.transform.tag == "Barrier") && is_float)
         {
             Stun();
+            TakeDamage(10);
+        }
+        else if(collision.transform.tag == "Enemy")
+        {
+            if(is_float)
+            {
+                collision.transform.GetComponent<Enemy>().BePushed(rb2d.velocity);
+            }
         }
     }
 

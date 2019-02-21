@@ -13,7 +13,7 @@ public class EyeMonster : Enemy
     {
         base.Start();
         shottime_cooldown = gameObject.AddComponent<Timer>();
-        shottime_cooldown.Duration = 1.5f;
+        shottime_cooldown.Duration = 2.5f;
         shottime_cooldown.Run();
     }
 
@@ -30,7 +30,7 @@ public class EyeMonster : Enemy
             Startmoving();
         }
 
-        if(shottime_cooldown.Finished)
+        if(shottime_cooldown.Finished && !is_dizzy && !pushed_time.Finished)
         {
             StartCoroutine(Shot());
         }
@@ -112,8 +112,15 @@ public class EyeMonster : Enemy
         else if ((collision.transform.tag == "Map" || collision.transform.tag == "Void" || collision.transform.tag == "Barrier") && is_float)
         {
             Stun();
+            TakeDamage(10);
         }
-
+        else if (collision.transform.tag == "Enemy")
+        {
+            if (is_float)
+            {
+                collision.transform.GetComponent<Enemy>().BePushed(rb2d.velocity);
+            }
+        }
         if (collision.gameObject.GetComponent<RockIronGiant>())
         {
             TakeDamage(100);
