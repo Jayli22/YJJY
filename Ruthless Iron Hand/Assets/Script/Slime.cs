@@ -17,6 +17,13 @@ public class Slime : Enemy
             Stun();
             TakeDamage(10);
         }
+        else if (collision.transform.tag == "Enemy")
+        {
+            if (is_float)
+            {
+                collision.transform.GetComponent<Enemy>().BePushed(rb2d.velocity);
+            }
+        }
 
         if (collision.gameObject.GetComponent<RockIronGiant>())
         {

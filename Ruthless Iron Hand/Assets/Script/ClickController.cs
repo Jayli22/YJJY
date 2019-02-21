@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ClickController : MonoBehaviour
 {
+
     public AudioClip cilckClip;
+
+   
     public void Click(string scene)
     {
         SceneManager.LoadScene(scene);

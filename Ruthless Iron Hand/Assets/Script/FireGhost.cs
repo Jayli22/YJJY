@@ -76,16 +76,28 @@ public class FireGhost : Enemy
             Vector2 dir;
             dir = obj.transform.position - transform.position;
 
-            
-                if (obj.GetComponent<Character>())
-                {
-                    obj.GetComponent<Character>().BePushed(dir);
-                    obj.GetComponent<Character>().TakeDamage(60);
-                }
-                else if (obj.GetComponent<DestructibleObject>())
-                    {
-                        obj.GetComponent<DestructibleObject>().bePushed(dir);
-                    } 
+
+            if (obj.GetComponent<Player>())
+            {
+                obj.GetComponent<Player>().BePushed(dir);
+
+            }
+            else if (obj.GetComponent<DestructibleObject>())
+            {
+                obj.GetComponent<DestructibleObject>().bePushed(dir);
+            }
+            else if (obj.GetComponent<Enemy>())
+            {
+                obj.GetComponent<Enemy>().TakeDamage(60);
+                obj.GetComponent<Enemy>().BePushed(dir);
+
+            }
+            else if (obj.GetComponent<RockIronGiant>())
+            {
+                obj.GetComponent<RockIronGiant>().TakeDamage(60);
+
+            }
+
 
 
                     //obj.enabled = false;
@@ -124,10 +136,20 @@ public class FireGhost : Enemy
             //rb2d.velocity = Vector2.zero;
             //m_dizzy_time.Run();
             DeathExplosion();
+            TakeDamage(10);
             //Destroy(gameObject);
            // Debug.Log("Wall");
             // TakeDamage(10);
         }
-    
+        else if (collision.transform.tag == "Enemy")
+        {
+            if (is_float)
+            {
+                //collision.transform.GetComponent<Enemy>().BePushed(rb2d.velocity);
+                DeathExplosion();
+
+            }
+        }
+
     }
 }

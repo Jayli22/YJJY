@@ -126,6 +126,13 @@ public class Enemy : Character
             Stun();
             TakeDamage(10);
         }
+        else if(collision.transform.tag == "Enemy")
+        {
+            if(is_float)
+            {
+                collision.transform.GetComponent<Enemy>().BePushed(rb2d.velocity);
+            }
+        }
     }
 
     //protected virtual void OnTriggerEnter2D(Collider2D collision)
