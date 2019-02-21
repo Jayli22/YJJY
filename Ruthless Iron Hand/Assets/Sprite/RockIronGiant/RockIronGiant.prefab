@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5277878322305075627}
   - component: {fileID: 888688594}
   - component: {fileID: 888688597}
-  m_Layer: 13
+  m_Layer: 19
   m_Name: RockIronGiant
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -174,6 +174,11 @@ MonoBehaviour:
   - {fileID: 4575045825903810897, guid: 522c9eba759d3b0419b54f30eb05d603, type: 3}
   - {fileID: 6464993804185554540, guid: 2ac6b36012132664088a1e14f35fc740, type: 3}
   - {fileID: 6705005590669532648, guid: ef8a8d5b54e94b94fafa09cae30f036a, type: 3}
+  shootAudio:
+  - {fileID: 8300000, guid: 209fdabbf35fc594a9b1107dcd4f664a, type: 3}
+  - {fileID: 8300000, guid: 4f9c8c35195dab94188e786c2380020d, type: 3}
+  - {fileID: 8300000, guid: ca0042f93b7d5ea49a8f64aa6827a431, type: 3}
+  - {fileID: 8300000, guid: a2b780e1913b2654196029ba4e862ad0, type: 3}
   rockHandPrefab: {fileID: 4940216697474411035, guid: b14430fcd9e632a4bbd76e8e4cbb1c9d,
     type: 3}
   hpBar: {fileID: 0}

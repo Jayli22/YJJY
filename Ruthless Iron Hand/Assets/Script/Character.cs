@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
         is_alive = true;
         animator = GetComponent<Animator>();
         pushed_time = gameObject.AddComponent<Timer>();
+        pushed_time.Duration = 3f;
         dizzy_time = gameObject.AddComponent<Timer>();
     }
 
@@ -110,6 +111,7 @@ public class Character : MonoBehaviour
     {
         is_dizzy = false;
         animator.SetBool("dizzy", false);
+       
     }
 
     

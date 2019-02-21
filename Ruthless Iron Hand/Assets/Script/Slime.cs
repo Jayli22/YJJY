@@ -15,6 +15,7 @@ public class Slime : Enemy
         else if ((collision.transform.tag == "Map" || collision.transform.tag == "Void" || collision.transform.tag == "Barrier") && is_float)
         {
             Stun();
+            TakeDamage(10);
         }
 
         if (collision.gameObject.GetComponent<RockIronGiant>())

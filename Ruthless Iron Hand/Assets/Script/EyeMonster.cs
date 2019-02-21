@@ -13,7 +13,7 @@ public class EyeMonster : Enemy
     {
         base.Start();
         shottime_cooldown = gameObject.AddComponent<Timer>();
-        shottime_cooldown.Duration = 1.5f;
+        shottime_cooldown.Duration = 2.5f;
         shottime_cooldown.Run();
     }
 
@@ -30,7 +30,7 @@ public class EyeMonster : Enemy
             Startmoving();
         }
 
-        if(shottime_cooldown.Finished)
+        if(shottime_cooldown.Finished && !is_dizzy && !pushed_time.Finished)
         {
             StartCoroutine(Shot());
         }

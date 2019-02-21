@@ -7,6 +7,8 @@ public class RockIronGiant : Character
     public GameObject[] bulletPrefabList;
     public GameObject[] enemyPrefabList;
     public GameObject[] barrierPrefabList;
+    public AudioClip[] shootAudio;
+    public AudioClip[] RightAttackAudio;
 
     private Timer shootingTime;
     private Timer attackCoolDown;
@@ -15,9 +17,9 @@ public class RockIronGiant : Character
     private bool shootbarrier;
     public GameObject rockHandPrefab;
     private Vector3 ShotPosition;
-   // [SerializeField]
-    //private StatBar hpBar;
-
+    [SerializeField]
+    private StatBar hpBar;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     protected override void Awake()
     {
@@ -26,10 +28,12 @@ public class RockIronGiant : Character
         shootingTime.Duration = 3f;
         ShotPosition= transform.position;
         ShotPosition.x = ShotPosition.x + 1.3f;
-       // hpBar.Initialize(currenthp, maxhp);
+       hpBar.Initialize(currenthp, maxhp);
         attackCoolDown = gameObject.AddComponent<Timer>();
         attackCoolDown.Duration = 3f;
         attackCoolDown.Run();
+        audioSource = gameObject.AddComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -70,8 +74,8 @@ public class RockIronGiant : Character
             ChooseAttack();
             attackCoolDown.Run();
         }
-       // hpBar.MyCurrentValue = currenthp;
-       // hpBar.MyMaxValue = maxhp;
+        hpBar.MyCurrentValue = currenthp;
+        hpBar.MyMaxValue = maxhp;
     }
 
     public void ShootAction()
@@ -324,6 +328,9 @@ public class RockIronGiant : Character
         GameObject bullet = Instantiate(bulletPrefabList[bulletType], ShotPosition, transform.rotation);
        // Vector2 dir = Player.MyInstance.transform.position - transform.position;
         bullet.GetComponent<Rigidbody2D>().AddForce(60 * dir.normalized);
+        int i = Random.Range(0, shootAudio.Length);
+        audioSource.clip = shootAudio[i];
+        audioSource.Play();
 
        
     }
@@ -362,6 +369,8 @@ public class RockIronGiant : Character
     public void RightHandAttack()
     {
         animator.SetTrigger("RightHandAttack");
+        audioSource.clip = RightAttackAudio[0];
+        audioSource.Play();
         
     }
 

@@ -71,6 +71,17 @@ public class Ironhand : MonoBehaviour {
             
             //PushAway(pushDegree, target_rb2d);
         }
+        else if (coll.gameObject.CompareTag("Boss"))
+        {
+            //Debug.Log("Enemy collider");
+           // Rigidbody2D target_rb2d = coll.gameObject.GetComponent<Rigidbody2D>();
+            //Vector2 dir = coll.transform.position - transform.position;
+
+           // coll.gameObject.GetComponent<Enemy>().BePushed(m_pushdirection, 5f);
+            coll.GetComponent<RockIronGiant>().TakeDamage(10);
+
+            //PushAway(pushDegree, target_rb2d);
+        }
         //else if (coll.gameObject.CompareTag("bullet"))
         //{
         //    Bullet bulletScript = coll.gameObject.GetComponent<Bullet>();
