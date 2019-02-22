@@ -20,6 +20,7 @@ public class RockIronGiant : Character
     [SerializeField]
     private StatBar hpBar;
     private AudioSource audioSource;
+    public GameObject EndPanel;
     // Start is called before the first frame update
     protected override void Awake()
     {
@@ -69,7 +70,7 @@ public class RockIronGiant : Character
             RightHandAttackRelease();
         }
 
-        if(attackCoolDown.Finished)
+        if(attackCoolDown.Finished && is_alive)
         {
             ChooseAttack();
             attackCoolDown.Run();
@@ -330,6 +331,7 @@ public class RockIronGiant : Character
         bullet.GetComponent<Rigidbody2D>().AddForce(60 * dir.normalized);
         int i = Random.Range(0, shootAudio.Length);
         audioSource.clip = shootAudio[i];
+        audioSource.volume = 0.5f;
         audioSource.Play();
 
        
@@ -370,6 +372,8 @@ public class RockIronGiant : Character
     {
         animator.SetTrigger("RightHandAttack");
         audioSource.clip = RightAttackAudio[0];
+        audioSource.volume = 1;
+
         audioSource.Play();
         
     }
@@ -417,7 +421,7 @@ public class RockIronGiant : Character
             Player.MyInstance.transform.GetChild(0).GetComponent<Collider2D>().enabled = false;
             Player.MyInstance.Hitable = false;
             Player.MyInstance.enabled = false;
-
+            EndPanel.SetActive(true);
             //Time.timeScale = 0;
         }
     }

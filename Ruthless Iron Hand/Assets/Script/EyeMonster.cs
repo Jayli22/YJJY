@@ -30,7 +30,7 @@ public class EyeMonster : Enemy
             Startmoving();
         }
 
-        if(shottime_cooldown.Finished && !is_dizzy && !pushed_time.Finished)
+        if(shottime_cooldown.Finished && !is_dizzy && !pushed_time.Finished && is_alive)
         {
             StartCoroutine(Shot());
         }
@@ -83,6 +83,7 @@ public class EyeMonster : Enemy
             {
                 Destroy(gameObject);
             }
+            StopCoroutine(Shot());
         }
     }
 
