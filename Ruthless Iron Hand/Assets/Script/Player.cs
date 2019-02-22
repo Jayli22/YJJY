@@ -93,7 +93,7 @@ public class Player : Character {
         {
             Destroy(gameObject);
         }
-        if (bepushed || is_dizzy)
+        if (bepushed || is_dizzy || !is_alive)
         {
 
         }
