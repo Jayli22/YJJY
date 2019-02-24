@@ -328,7 +328,7 @@ public class Player : Character {
 
         animator.SetTrigger("rush");
         rb2d.velocity = movedirection * movespeed * 5;
-        Debug.Log(rb2d.velocity);
+        //Debug.Log(rb2d.velocity);
 
         Vector3 dir = new Vector3(movedirection.x, movedirection.y, 0);
        // transform.position += dir.normalized * m_movespeed * 60 * Time.deltaTime;
@@ -350,7 +350,7 @@ public class Player : Character {
         bepushed = true;
         dir = dir.normalized;
 
-        Debug.Log("push");
+       // Debug.Log("push");
         pushed_time.Run();
         rb2d.velocity = 3 * dir * movespeed;
 

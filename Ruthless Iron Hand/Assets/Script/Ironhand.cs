@@ -42,7 +42,7 @@ public class Ironhand : MonoBehaviour {
     }
     public void pushing(float pushAngle)
     {
-        print(pushAngle*Mathf.Rad2Deg);
+        //print(pushAngle*Mathf.Rad2Deg);
         m_pushDegree = pushAngle;
         m_pushdirection.x = Mathf.Cos(pushAngle);
         m_pushdirection.y = Mathf.Sin(pushAngle);
@@ -57,7 +57,12 @@ public class Ironhand : MonoBehaviour {
             Rigidbody2D target_rb2d = coll.gameObject.GetComponent<Rigidbody2D>();
             // coll.gameObject.GetComponent<DestructibleObject>().m_pushed_time.Run();
             Vector2 dir = coll.transform.position - transform.position;
-            coll.gameObject.GetComponent<DestructibleObject>().bePushed(m_pushdirection);
+            if(coll.gameObject.GetComponent<DestructibleObject>())
+            {
+
+                coll.gameObject.GetComponent<DestructibleObject>().bePushed(m_pushdirection);
+            }
+
             //PushAway(pushDegree, target_rb2d);
         }
         else if (coll.gameObject.CompareTag("Enemy"))
@@ -65,8 +70,12 @@ public class Ironhand : MonoBehaviour {
             //Debug.Log("Enemy collider");
             Rigidbody2D target_rb2d = coll.gameObject.GetComponent<Rigidbody2D>();
             Vector2 dir = coll.transform.position - transform.position;
+            if(coll.gameObject.GetComponent<Enemy>())
+            {
 
+            
             coll.gameObject.GetComponent<Enemy>().BePushed(m_pushdirection, 5f);
+            }
             coll.GetComponent<Enemy>().TakeDamage(10);
             
             //PushAway(pushDegree, target_rb2d);

@@ -28,10 +28,10 @@ public class RockHandEffect : EffectScript
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
+    { 
         if (collision.tag == "Player")
         {
-            Player.MyInstance.TakeDamage(1);
+            Player.MyInstance.TakeDamage(30);
             Player.MyInstance.BePushed(transform.position - Player.MyInstance.transform.position, 0.5f);
         }
     }

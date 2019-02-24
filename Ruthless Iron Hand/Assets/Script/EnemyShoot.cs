@@ -29,7 +29,7 @@ public class EnemyShoot : MonoBehaviour
         {
             //target = Instantiate(targetPrefab, landPosition, transform.rotation);
             isTarget = true;
-            Debug.Log("target");
+           // Debug.Log("target");
         }
         if (changeTimer.Finished)
         {

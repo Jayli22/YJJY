@@ -28,7 +28,7 @@ public class Pillar : DestructibleObject
         Vector2 p = transform.position ;
         p.x = p.x + dir.normalized.x * 0.7f;
         p.y = p.y + dir.normalized.y * 1.1f;
-        Debug.Log(Mathf.Atan2(dir.y, dir.x));
+       // Debug.Log(Mathf.Atan2(dir.y, dir.x));
         GameObject floatPillar = Instantiate(floatPillarPrefab, p, transform.rotation);
         floatPillar.GetComponent<FloatPillar>().bePushed(dir);
     }
@@ -39,7 +39,7 @@ public class Pillar : DestructibleObject
         Vector2 p = transform.position;
         p.x = p.x + dir.normalized.x * 0.7f;
         p.y = p.y + dir.normalized.y * 1.1f;
-        Debug.Log(Mathf.Atan2(dir.y, dir.x));
+      //  Debug.Log(Mathf.Atan2(dir.y, dir.x));
         GameObject floatPillar = Instantiate(floatPillarPrefab, p, transform.rotation);
         floatPillar.GetComponent<FloatPillar>().bePushed(dir);
     }

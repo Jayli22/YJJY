@@ -47,7 +47,7 @@ public class GuideScript : MonoBehaviour
         GetComponent<Transform>().position = position;
 
     //   Rotate(0, 0, angle);
-    Debug.Log(angle);
+   // Debug.Log(angle);
     }
 
 }
